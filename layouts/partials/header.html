@@ -9,7 +9,7 @@
 <!-- Enable responsiveness on mobile devices-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-{{ partial "headbegin.html" }}
+{{ partial "headbegin.html" . }}
 
 <!-- Metadata -->
 {{ if .Description }}<meta name="description" content="{{ .Description }}">{{ end }}
@@ -32,5 +32,8 @@
 <!-- RSS -->
 <link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
 
-{{ partial "headend.html" }}
+<!-- Fonts -->
+{{ partial "fonts.html" . }}
+
+{{ partial "headend.html" . }}
 </head>
