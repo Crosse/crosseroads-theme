@@ -1,0 +1,22 @@
+@import "compass/css3";
+
+@include font-face("Cousine", font-files("cousine-regular.woff2", "cousine-regular.woff", "cousine-regular.ttf"), "cousine-regular.eot", normal, normal);
+@include font-face("Cousine", font-files("cousine-bold.woff2", "cousine-bold.woff", "cousine-bold.ttf"), "cousine-bold.eot", bold, normal);
+@include font-face("Cousine", font-files("cousine-italic.woff2", "cousine-italic.woff", "cousine-italic.ttf"), "cousine-italic.eot", normal, italic);
+@include font-face("Cousine", font-files("cousine-bolditalic.woff2", "cousine-bolditalic.woff", "cousine-bolditalic.ttf"), "cousine-bolditalic.eot", bold, italic);
+
+@include font-face("Libre Baskerville", font-files("librebaskerville-regular.woff2", "librebaskerville-regular.woff", "librebaskerville-regular.ttf"), "librebaskerville-regular.eot", 400, normal);
+@include font-face("Libre Baskerville", font-files("librebaskerville-bold.woff2", "librebaskerville-bold.woff", "librebaskerville-bold.ttf"), "librebaskerville-bold.eot", 700, normal);
+@include font-face("Libre Baskerville", font-files("librebaskerville-italic.woff2", "librebaskerville-italic.woff", "librebaskerville-italic.ttf"), "librebaskerville-italic.eot", normal, italic);
+
+@include font-face("Raleway", font-files("raleway-thin.woff2", "raleway-thin.woff", "raleway-thin.ttf"), "raleway-thin.eot", 100, normal);
+@include font-face("Raleway", font-files("raleway-thinitalic.woff2", "raleway-thinitalic.woff", "raleway-thinitalic.ttf"), "raleway-thinitalic.eot", 100, italic);
+
+@include font-face("Raleway", font-files("raleway-extralight.woff2", "raleway-extralight.woff", "raleway-extralight.ttf"), "raleway-extralight.eot", 200, normal);
+@include font-face("Raleway", font-files("raleway-extralightitalic.woff2", "raleway-extralightitalic.woff", "raleway-extralightitalic.ttf"), "raleway-extralightitalic.eot", 200, italic);
+
+@include font-face("Raleway", font-files("raleway-regular.woff2", "raleway-regular.woff", "raleway-regular.ttf"), "raleway-regular.eot", 400, normal);
+@include font-face("Raleway", font-files("raleway-italic.woff2", "raleway-italic.woff", "raleway-italic.ttf"), "raleway-italic.eot", 400, italic);
+
+@include font-face("Raleway", font-files("raleway-bold.woff2", "raleway-bold.woff", "raleway-bold.ttf"), "raleway-bold.eot", 700, normal);
+@include font-face("Raleway", font-files("raleway-bolditalic.woff2", "raleway-bolditalic.woff", "raleway-bolditalic.ttf"), "raleway-bolditalic.eot", 700, italic);
