@@ -1,9 +1,9 @@
-//@import "compass/reset";
+@import "compass/reset";
 @import "compass/css3/box-sizing";
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
 @import "compass/css3/transition";
-@import "compmass/css3/flexbox";
+@import "compass/css3/flexbox";
 
 //@import "_fonts.scss";
 
@@ -40,44 +40,89 @@ html, p, nav, section, article {
     hyphens: auto;
 }
 
-.content {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
 .navbar, .navigation {
     margin: 0;
-
     background-color: $sidebar_background_color;
+
+    @include display-flex(flex);
+    @include flex-direction(row);
+    @include align-items(center);
 
     a {
         text-decoration: none;
         display: block;
-        padding: 1em;
+        padding: 0.25em 0.75em;
         color: white;
     }
 }
 
 .navbar {
-    -webkit-flex-flow: row wrap;
-    justify-content: space-between;
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);
 }
 
 .navigation {
     list-style: none;
+    @include flex(2 0 auto);
+    @include justify-content(flex-end);
 }
 
 .site-title {
     letter-spacing: 0.12em;
-    font-weight: 700;
+    font-family: $header_fonts;
+    font-weight: 400;
     font-size: 1.5em;
+
+    @include flex(0 1 auto);
+}
+
+.site-subtitle {
+    color: white;
+    font-family: $header_fonts;
+    letter-spacing: 0.07em;
+    font-weight: 400;
+    font-size: 1em;
+
+    @include flex(1 1 auto);
+}
+
+.content {
+    @include display-flex(flex);
+    @include flex-direction(column);
+    @include justify-content(space-between);
+    @include align-content(flex-end);
+    height: 100vh;
 }
 
 .main {
-    flex: 1 0 60%;
+    margin: 1em 0.5em 0em 0.5em;
+    @include flex(1 0 auto);
+}
+
+.posts {
+    @include display-flex(flex);
+    @include flex-direction(row);
+    @include justify-content(space-between);
+    @include align-content(flex-end);
+    @include flex-wrap(wrap);
+}
+
+.post {
+    margin: 1em;
+    @include flex(1 0 30%);
+}
+
+.footer {
+    padding: 0.5em;
+    @include flex(1 0 flex-end);
+    @include align-self(center);
+}
+
+.build {
+    font-family: $header_fonts;
+    font-style: italic;
+    font-size: 0.75em;
+    font-weight: 100;
 }
 
 .post-header {
@@ -94,7 +139,7 @@ html, p, nav, section, article {
 }
 
 a {
-    @include transition(0.5s);
+    @include transition(0.4s);
     color: $link_color;
     text-decoration: none;
 
@@ -103,6 +148,6 @@ a {
     }
     &:hover {
         @extend a:focus;
-        text-decoration: underline;
+        //text-decoration: underline;
     }
 }

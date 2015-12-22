@@ -2,14 +2,21 @@
 
 <body>
 
-<div class="navbar">
-    <a href="{{ .Site.BaseURL }}">{{ .Title }}</a>
-    <ul class="navigation">
-        <li><a href="#">Archives</a></li>
-    </ul>
-</div>
-
 <div class="content">
+    <div class="navbar">
+        <a class="site-title" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+        {{ if .Site.Params.SiteTagline }}
+        <span class="site-subtitle">// {{ .Site.Params.SiteTagline }}</span>
+        {{ end }}
+        <ul class="navigation">
+            {{ range $name, $section := .Site.Sections }}
+            {{ if not (eq $name "post") }}
+                <li><a href="/{{ $name | urlize }}">{{ $name }}</a></li>
+            {{ end }}
+            {{ end }}
+        </ul>
+    </div>
+
     <div class="main">
         <div class="posts">
             {{ $Site := .Site }}
@@ -48,8 +55,10 @@
             {{ end }}
         </div>
     </div>
+
+    <div class="footer">
+        {{ partial "footer.html" . }}
+    </div>
 </div>
 </body>
-
-{{ partial "footer.html" . }}
 </html>
