@@ -1,26 +1,12 @@
 {{ partial "header.html" . }}
-
 <body>
-
 <div class="content">
-    <div class="navbar">
-        <a class="site-title" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-        {{ if .Site.Params.SiteTagline }}
-        <span class="site-subtitle">// {{ .Site.Params.SiteTagline }}</span>
-        {{ end }}
-        <ul class="navigation">
-            {{ range $name, $section := .Site.Sections }}
-            {{ if not (eq $name "post") }}
-                <li><a href="/{{ $name | urlize }}">{{ $name }}</a></li>
-            {{ end }}
-            {{ end }}
-        </ul>
-    </div>
-
+    {{ partial "navbar.html" . }}
     <div class="main">
         <div class="posts">
             {{ $Site := .Site }}
-            {{ range first 10 (where .Data.Pages "Section" "post") }}
+            {{/* range first 10 (where .Data.Pages "Section" "post") */}}
+            {{ range first 10 .Data.Pages }}
             <section class="post">
                 <header class="post-header">
                     <h1 class="post-title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h1>

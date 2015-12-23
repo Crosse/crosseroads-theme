@@ -1,15 +1,22 @@
-@import "compass/reset";
-@import "compass/css3/box-sizing";
+//@import "compass/reset";
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
-@import "compass/css3/transition";
+@import "compass/css3/box-sizing";
 @import "compass/css3/flexbox";
+@import "compass/css3/transition";
+@import "compass/typography/text/force-wrap";
+@import "compass/typography/vertical_rhythm";
 
-//@import "_fonts.scss";
+$small-font-size: 12px;
+$code-font-size: 14px;
+$base-font-size: 16px;
+$medium-font-size: 22px;
+$large-font-size: 32px;
 
 $main_fonts: 'freight-neo-pro', 'Helvetica', 'Arial', sans-serif;
-$code_fonts: 'Cousine', monospace;
+$code_fonts: 'prestige-elite-std', 'Source Code Pro', 'Consolas', monospace;
 $header_fonts: 'orpheuspro', serif;
+
 $main_font_color: #2d303b;
 $sidebar_background_color: #2d303b;
 $alt_font_color: #7F1000;
@@ -18,12 +25,15 @@ $link_color: #616161;
 $link_focus_color: #E54028;
 $post_title_color: #111111;
 
+
 * {
     @include box-sizing(border-box);
 }
 
 html {
     color: $main_font_color;
+    font-size: $base-font-size;
+
     text-rendering: optimizeLegibility;
 
     font-kerning: normal;
@@ -36,8 +46,44 @@ html {
 
 html, p, nav, section, article {
     font-family: $main_fonts;
-    font-weight: 400;
     hyphens: auto;
+}
+
+pre {
+    padding: 0.5rem;
+    font-family: $code_fonts;
+    font-size: $code-font-size;
+
+    background-color: #f8f8f8;
+    @include border-radius(0.25rem);
+    @include box-shadow(1px 1px 5px rgba(0, 0, 0, 0.2));
+    border: 1px solid #ddd;
+    @include border-radius(0.25rem);
+    //line-height: 1.55;
+}
+
+p {
+    color: $main_font_color;
+    code {
+        @extend pre;
+        font-size: $base-font-size+2;
+        font-weight: 700;
+        padding: 0.02rem 0.1rem;
+        position: relative;
+        top: -0.12rem;
+    }
+    a {
+        color: $alt_font_color;
+    }
+}
+
+.content {
+    margin: 0;
+    @include display-flex(flex);
+    @include flex-direction(column);
+    @include justify-content(space-between);
+    @include align-content(flex-end);
+    height: 100vh;
 }
 
 .navbar, .navigation {
@@ -47,6 +93,7 @@ html, p, nav, section, article {
     @include display-flex(flex);
     @include flex-direction(row);
     @include align-items(center);
+    @include flex(1 0 auto);
 
     a {
         text-decoration: none;
@@ -71,7 +118,7 @@ html, p, nav, section, article {
     letter-spacing: 0.12em;
     font-family: $header_fonts;
     font-weight: 400;
-    font-size: 1.5em;
+    //font-size: 1.5em;
 
     @include flex(0 1 auto);
 }
@@ -81,35 +128,44 @@ html, p, nav, section, article {
     font-family: $header_fonts;
     letter-spacing: 0.07em;
     font-weight: 400;
-    font-size: 1em;
+    //font-size: 1em;
 
     @include flex(1 1 auto);
-}
-
-.content {
-    @include display-flex(flex);
-    @include flex-direction(column);
-    @include justify-content(space-between);
-    @include align-content(flex-end);
-    height: 100vh;
 }
 
 .main {
     margin: 1em 0.5em 0em 0.5em;
     @include flex(1 0 auto);
+
+    @include display-flex(flex);
+    @include align-items(flex-start);
+    @include justify-content(center);
 }
 
 .posts {
+    max-width: 960px;
     @include display-flex(flex);
     @include flex-direction(row);
-    @include justify-content(space-between);
-    @include align-content(flex-end);
+    @include justify-content(flex-start);
     @include flex-wrap(wrap);
 }
 
-.post {
-    margin: 1em;
+.main>.post {
+    font-size: $medium-font-size;
+    width: 800px;
+}
+
+.posts>.post {
+    max-width: 33%;
+    padding: 0.75em;
+    margin-bottom: 2em;
     @include flex(1 0 30%);
+
+    border-left: 1px solid black;
+
+    &:first-of-type {
+        border: none;
+    }
 }
 
 .footer {
@@ -121,18 +177,19 @@ html, p, nav, section, article {
 .build {
     font-family: $header_fonts;
     font-style: italic;
-    font-size: 0.75em;
+    //font-size: 0.75em;
     font-weight: 100;
 }
 
 .post-header {
     //padding-top: .75rem;
-    border-top: 1px solid black;
+    //border-top: 1px solid black;
 }
 
 .post-title {
+    margin: 0;
     font-family: $header_fonts;
-    font-size: 1.45rem;
+    //font-size: 1.45rem;
     font-weight: 700;
     letter-spacing: 0.09rem;
     hyphens: none;
@@ -149,5 +206,45 @@ a {
     &:hover {
         @extend a:focus;
         //text-decoration: underline;
+    }
+}
+
+
+@media screen and (max-width:960px) {
+    .posts {
+        @include justify-content(center);
+    }
+    .posts>.post {
+        max-width: 33%;
+    }
+}
+@media screen and (max-width:800px) {
+    p {
+        //font-size: 0.9em;
+    }
+    pre {
+        @include force-wrap;
+        //font-size: 0.9em;
+        code {
+            //font-size: 0.9em;
+            padding: 0.1rem 0.2rem 0.0rem 0.2rem;
+        }
+    }
+    .posts {
+        @include flex-direction(column);
+        @include align-items(center);
+    }
+    .posts>.post {
+        @include flex(1 0 auto);
+        margin: 0;
+        max-width: 90%;
+
+        &, &:first-of-type {
+            border: none;
+            border-bottom: 1px solid black;
+        }
+        &:last-of-type {
+            border: none;
+        }
     }
 }
