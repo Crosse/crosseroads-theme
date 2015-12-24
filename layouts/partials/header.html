@@ -1,20 +1,44 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html lang="en-us">
 <head>
+<meta charset="utf-8"> <!-- Must occur within the first 1024 bytes of content -->
+<!-- Force IE to use the highest available rendering mode. -->
+<!-- Include before all other tags except <title> and <meta> -->
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<base href="{{ .Site.BaseURL }}" target="_blank">
+
 <title>{{ .Title }}{{ if ne .Title .Site.Title }} // {{ .Site.Title }}{{ end }}</title>
-
-{{ .Hugo.Generator }}
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-<!-- Enable responsiveness on mobile devices-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 {{ partial "headbegin.html" . }}
 
-<!-- Metadata -->
+{{ if .Hugo.Generator }}{{ .Hugo.Generator }}{{ end }}
 {{ if .Description }}<meta name="description" content="{{ .Description }}">{{ end }}
 {{ if .Keywords }}<meta name="keywords" content="{{ range .Keywords }}{{ . }},{{ end }}">{{ end }}
 {{ if .Params.author }}<meta name="author" content="{{ .Params.author }}">{{ end }}
+
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Any favicons or touch icons can go here. -->
+
+<!-- Stylesheets go here. -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" type='text/css' href="css/screen.css">
+{{ if .Site.Params.lightbox }}
+<link rel="stylesheet" type="text/css" href="css/lightbox.min.css">
+{{ end }}
+
+<!-- HTML5Shiv to enable styling of HTML5 elements in IE < 9 -->
+<!-- Include after all stylesheets. -->
+<!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+<![endif]-->
+
+<!-- RSS -->
+<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+
+<!-- Fonts -->
+{{ partial "fonts.html" . }}
 
 <!-- OpenGraph -->
 <meta property="og:title" content="{{ if .Params.ogtitle }}{{ .Params.ogtitle }}{{ else }}{{ .Title }}{{ end }}" />
@@ -25,15 +49,6 @@
 {{ if .Params.ogimage }}
 <meta property="og:image" content="{{ .Params.ogimage }}" />
 {{ end }}
-
-<!-- CSS -->
-<link rel="stylesheet" type='text/css' href="{{ .Site.BaseURL }}/css/screen.css">
-
-<!-- RSS -->
-<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-
-<!-- Fonts -->
-{{ partial "fonts.html" . }}
 
 {{ partial "headend.html" . }}
 </head>
