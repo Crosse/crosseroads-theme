@@ -7,6 +7,8 @@
 @import "compass/typography/text/force-wrap";
 @import "compass/typography/vertical_rhythm";
 
+//@import "fonts";
+
 $small-font-size: 12px;
 $code-font-size: 14px;
 $base-font-size: 16px;
@@ -48,6 +50,83 @@ html, p, nav, section, article {
     font-family: $main_fonts;
     hyphens: auto;
 }
+
+/* === The following was taken from HTML5 Boilerplate's main.css === */
+
+/*
+  Remove text-shadow in selection highlight.
+  This MUST be duplicated; otherwise it won't work.
+
+  "…[B]rowsers ignore the entire selector if there is a part of it they
+  don't understand or is invalid."
+  - https://css-tricks.com/overriding-the-default-text-selection-color-with-css/
+*/
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+//@import "html5helpers";
+
+/* === The preceding was taken from HTML5 Boilerplate's main.css === */
+
 
 pre {
     padding: 0.5rem;
@@ -248,3 +327,5 @@ a {
         }
     }
 }
+
+@import "print";
