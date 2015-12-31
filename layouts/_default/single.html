@@ -1,26 +1,39 @@
 {{ partial "header.html" . }}
 <body>
-<div class="content">
-    {{ partial "navbar.html" . }}
-    <div class="main">
-        {{ $Site := .Site }}
-        <section class="post">
-            <header class="post-header">
-                <h1 class="post-title">{{.Title}}</h1>
-            <span class="post-meta">
-            {{ if not .Params.nodate }}
-            posted on {{ .Date.Format "Jan. 2, 2006" }}
-            {{ end }}
-            </span>
-            </header>
-            <article class="post-content">
-                {{ .Content }}
-            </article>
-        </section>
-    </div>
-    <div class="footer">
-        {{ partial "footer.html" . }}
-    </div>
-</div>
+{{ partial "bodybegin.html" . }}
+{{ partial "navbar.html" . }}
+<main>
+{{ $Site := .Site }}
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">{{.Title}}</h1>
+        <p class="post-meta">
+        {{ if not (.Param "nodate") }}
+        posted on {{ dateFormat "Jan. 2, 2006" .Date }}
+        {{ end }}
+
+        {{ if and (not (.Param "noauthor")) (.Param "author") }}
+        by {{ if .Param "authorlink" }}<a class="post-author" href="{{ .Param "authorlink" }}">{{ end }}{{ .Param "author"  }}{{ if .Param "authorlink" }}</a>{{ end }}
+        {{ end }}
+
+        {{ if not (.Param "noreadtime") }}
+        <span class="post-reading-time">(<i class="fa fa-clock-o"></i> <em>{{.ReadingTime}} min. read</em>)</span>
+        {{ end }}
+
+        {{ with .Params.categories }}
+        <div class="post-categories">
+            {{ delimit (apply (apply (sort .) "partial" "post/category/link" ".") "chomp" ".") ", " }}
+        </div>
+        {{ end }}
+        </p>
+    </header>
+    </header>
+    <section class="post-content">
+        {{ .Content }}
+    </section>
+</article>
+</main>
+{{ partial "footer.html" . }}
+{{ partial "bodyend.html" . }}
 </body>
 </html>

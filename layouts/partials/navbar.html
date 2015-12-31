@@ -1,13 +1,16 @@
-<div class="navbar">
-    <a class="site-title" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+<header class="site-header">
+    <a class="site-title" href="{{ $.Site.BaseURL | printf "%v" | relURL }}">{{ .Site.Title }}</a>
     {{ if .Site.Params.SiteTagline }}
-    <span class="site-subtitle">// {{ .Site.Params.SiteTagline }}</span>
+    <span class="site-subtitle">{{ .Site.Params.SiteTagline }}</span>
     {{ end }}
-    <ul class="navigation">
-        {{ range $name, $section := .Site.Sections }}
-        {{ if not (eq $name "post") }}
-            <li><a href="/{{ $name | urlize }}">{{ $name }}</a></li>
-        {{ end }}
-        {{ end }}
-    </ul>
-</div>
+    <nav>
+        <ul class="navigation">
+            {{ range $name, $section := .Site.Sections }}
+            {{ if $name }}
+            <li><a href="{{ $name | urlize }}">{{ $name | pluralize }}</a></li>
+            <span class="link-separator"></span>
+            {{ end }}
+            {{ end }}
+        </ul>
+    </nav>
+</header>

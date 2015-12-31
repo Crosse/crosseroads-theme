@@ -1,0 +1,48 @@
+{{ partial "header.html" . }}
+<body>
+{{ partial "bodybegin.html" . }}
+{{ partial "navbar.html" . }}
+<main>
+<section class="posts">
+    {{ $Site := .Site }}
+    {{ range .Data.Pages }}
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h1>
+            <p class="post-meta">
+
+            {{ if not (.Param "nodate") }}
+            posted on {{ dateFormat "Jan. 2, 2006" .Date }}
+            {{ end }}
+
+            {{ if and (not (.Param "noauthor")) (.Param "author") }}
+            by {{ if .Param "authorlink" }}<a class="post-author" href="{{ .Param "authorlink" }}">{{ end }}{{ .Param "author"  }}{{ if .Param "authorlink" }}</a>{{ end }}
+            {{ end }}
+
+            {{ if not (.Param "noreadtime") }}
+            <span class="post-reading-time">(<i class="fa fa-clock-o"></i> <em>{{.ReadingTime}} min. read</em>)</span>
+            {{ end }}
+
+            {{ with .Params.categories }}
+            <div class="post-categories">
+                {{ delimit (apply (apply (sort .) "partial" "post/category/link" ".") "chomp" ".") ", " }}
+            </div>
+            {{ end }}
+            </p>
+        </header>
+        <section class="post-summary">
+            {{ .Summary }}
+        {{ if .Truncated }}
+        <div class="read-more-link">
+            <a href="{{ .RelPermalink }}"><span class="read-more-slashes">//</span>Read More...</a>
+        </div>
+        {{ end }}
+        </section>
+    </article>
+    {{ end }}
+</section>
+</main>
+{{ partial "footer.html" . }}
+{{ partial "bodyend.html" . }}
+</body>
+</html>

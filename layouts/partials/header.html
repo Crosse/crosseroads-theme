@@ -5,7 +5,7 @@
 <!-- Force IE to use the highest available rendering mode. -->
 <!-- Include before all other tags except <title> and <meta> -->
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<base href="{{ .Site.BaseURL }}" target="_blank">
+<base href="{{ .Site.BaseURL }}">
 
 <title>{{ .Title }}{{ if ne .Title .Site.Title }} // {{ .Site.Title }}{{ end }}</title>
 
@@ -30,12 +30,12 @@
 
 <!-- HTML5Shiv to enable styling of HTML5 elements in IE < 9 -->
 <!-- Include after all stylesheets. -->
-<!--[if lt IE 9]>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-<![endif]-->
+{{ `<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+<![endif]-->` | safeHTML }}
 
 <!-- RSS -->
-<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+<link href="{{ trim .RSSlink "\"" | relURL }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
 
 <!-- Fonts -->
 {{ partial "fonts.html" . }}

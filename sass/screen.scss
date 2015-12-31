@@ -3,52 +3,70 @@
 @import "compass/css3/box-shadow";
 @import "compass/css3/box-sizing";
 @import "compass/css3/flexbox";
+@import "compass/css3/hyphenation";
 @import "compass/css3/transition";
 @import "compass/typography/text/force-wrap";
 @import "compass/typography/vertical_rhythm";
 
 //@import "fonts";
 
+$tiny-font-size: 8px;
 $small-font-size: 12px;
-$code-font-size: 14px;
+$code-font-size: 16px;
 $base-font-size: 16px;
 $medium-font-size: 22px;
 $large-font-size: 32px;
 
-$main_fonts: 'freight-neo-pro', 'Helvetica', 'Arial', sans-serif;
-$code_fonts: 'prestige-elite-std', 'Source Code Pro', 'Consolas', monospace;
-$header_fonts: 'orpheuspro', serif;
+$header-fonts: 'freight-neo-pro', 'Helvetica', 'Arial', sans-serif;
+$main-fonts: 'orpheuspro', serif;
+$code-fonts: 'adaptive-mono', 'Source Code Pro', 'Consolas', 'Inconsolata', 'Monaco' monospace;
 
-$main_font_color: #2d303b;
+$main-font-color: #2d303b;
 $sidebar_background_color: #2d303b;
 $alt_font_color: #7F1000;
-$sidebar_font_color: #8b8b8b;
-$link_color: #616161;
-$link_focus_color: #E54028;
-$post_title_color: #111111;
+//$sidebar-font-color: #8b8b8b;
+$link-color: #616161;
+$link-focus-color: #E54028;
+$post-title-color: #111111;
 
+
+/* hide text until fonts have loaded. */
+.wf-loading {
+    visibility: hidden;
+}
 
 * {
     @include box-sizing(border-box);
 }
 
 html {
-    color: $main_font_color;
+    color: $main-font-color;
     font-size: $base-font-size;
 
     text-rendering: optimizeLegibility;
 
+    -moz-font-kerning: normal;
+    -ms-font-kerning: normal;
+    -o-font-kerning: normal;
+    -webkit-font-kerning: normal;
     font-kerning: normal;
+
+    -moz-font-variant-ligatures: common-ligatures, contextual;
+    -ms-font-variant-ligatures: common-ligatures, contextual;
+    -o-font-variant-ligatures: common-ligatures, contextual;
+    -webkit-font-variant-ligatures: common-ligatures;
     font-variant-ligatures: common-ligatures, contextual;
+
     -moz-font-feature-settings: "kern", "liga", "clig", "calt";
     -ms-font-feature-settings: "kern", "liga", "clig", "calt";
+    -o-font-feature-settings: "kern", "liga", "clig", "calt";
     -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
     font-feature-settings: "kern", "liga", "clig", "calt";
 }
 
 html, p, nav, section, article {
-    font-family: $main_fonts;
-    hyphens: auto;
+    font-family: $main-fonts;
+    @include hyphens(auto);
 }
 
 /* === The following was taken from HTML5 Boilerplate's main.css === */
@@ -73,7 +91,6 @@ html, p, nav, section, article {
 /*
  * A better looking default horizontal rule
  */
-
 hr {
     display: block;
     height: 1px;
@@ -88,20 +105,13 @@ hr {
  * images, videos and the bottom of their containers:
  * https://github.com/h5bp/html5-boilerplate/issues/440
  */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
+audio, canvas, iframe, img, svg, video {
     vertical-align: middle;
 }
 
 /*
  * Remove default fieldset styles.
  */
-
 fieldset {
     border: 0;
     margin: 0;
@@ -111,7 +121,6 @@ fieldset {
 /*
  * Allow only vertical resizing of textareas.
  */
-
 textarea {
     resize: vertical;
 }
@@ -128,35 +137,40 @@ textarea {
 /* === The preceding was taken from HTML5 Boilerplate's main.css === */
 
 
-pre {
-    padding: 0.5rem;
-    font-family: $code_fonts;
-    font-size: $code-font-size;
+code {
+    font-family: $code-fonts;
+}
 
-    background-color: #f8f8f8;
-    @include border-radius(0.25rem);
-    @include box-shadow(1px 1px 5px rgba(0, 0, 0, 0.2));
+pre {
+    background-color: #f5f5f5;
+    font-family: $code-fonts;
+    font-size: $code-font-size;
+    line-height: 1.55;
+    padding: 0.5em;
+    margin: 1em 0;
     border: 1px solid #ddd;
     @include border-radius(0.25rem);
-    //line-height: 1.55;
+    @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
 }
 
 p {
-    color: $main_font_color;
+    color: $main-font-color;
+    margin: 0 0 0.15rem 0;
+    text-indent: 1.35em;
+
     code {
-        @extend pre;
-        font-size: $base-font-size+2;
-        font-weight: 700;
-        padding: 0.02rem 0.1rem;
-        position: relative;
-        top: -0.12rem;
+        background-color: #f5f5f5;
+        font-family: $code-fonts;
+        padding: 0 0.05rem;
+        border: 1px solid #e5e5e5;
+        @include border-radius(0.15rem);
     }
     a {
         color: $alt_font_color;
     }
 }
 
-.content {
+body {
     margin: 0;
     @include display-flex(flex);
     @include flex-direction(column);
@@ -165,60 +179,94 @@ p {
     height: 100vh;
 }
 
-.navbar, .navigation {
-    margin: 0;
+.site-header {
+    padding: 1em;
     background-color: $sidebar_background_color;
 
     @include display-flex(flex);
     @include flex-direction(row);
     @include align-items(center);
-    @include flex(1 0 auto);
+    @include align-content(center);
+    @include flex(0 1 auto);
+    min-height: 4rem;
 
     a {
         text-decoration: none;
         display: block;
-        padding: 0.25em 0.75em;
         color: white;
+        //padding: 0.25em 0.75em;
     }
 }
 
-.navbar {
+nav {
     @include flex-wrap(wrap);
-    @include justify-content(space-between);
+    @include flex(2 0 auto);
+    @include justify-content(flex-end);
+    @include align-items(flex-end);
 }
 
 .navigation {
+    margin: 0;
+    padding: 0 0.5em;
+    color: white;
+
     list-style: none;
-    @include flex(2 0 auto);
+    @include flex(1 0 auto);
+
+    @include display-flex(flex);
     @include justify-content(flex-end);
+
+    & li {
+        padding: 0.25em;
+    }
+    & .link-separator {
+        padding: 0.25em;
+    }
+    & .link-separator::before {
+        content: "|";
+    }
+    & .link-separator:last-of-type::before {
+        content: "";
+    }
 }
 
 .site-title {
     letter-spacing: 0.12em;
-    font-family: $header_fonts;
+    font-family: $header-fonts;
     font-weight: 400;
-    //font-size: 1.5em;
+    font-size: 1.5rem;
 
     @include flex(0 1 auto);
+    margin: 0 0.5em;
 }
 
 .site-subtitle {
     color: white;
-    font-family: $header_fonts;
+    font-family: $header-fonts;
     letter-spacing: 0.07em;
     font-weight: 400;
-    //font-size: 1em;
+    font-size: 1rem;
 
-    @include flex(1 1 auto);
+    @include flex(0 1 auto);
+    margin: 0 0.5em;
+
+    &::before {
+        content: "//\00a0";
+    }
 }
 
-.main {
+main {
     margin: 1em 0.5em 0em 0.5em;
     @include flex(1 0 auto);
 
     @include display-flex(flex);
     @include align-items(flex-start);
     @include justify-content(center);
+
+    &>.post {
+        font-size: $medium-font-size;
+        width: 800px;
+    }
 }
 
 .posts {
@@ -227,15 +275,11 @@ p {
     @include flex-direction(row);
     @include justify-content(flex-start);
     @include flex-wrap(wrap);
+
 }
 
-.main>.post {
-    font-size: $medium-font-size;
-    width: 800px;
-}
-
-.posts>.post {
-    max-width: 33%;
+article {
+    max-width: 960px;
     padding: 0.75em;
     margin-bottom: 2em;
     @include flex(1 0 30%);
@@ -247,47 +291,94 @@ p {
     }
 }
 
-.footer {
+footer {
+    font-size: $small-font-size;
+    color: #8c8c8c;
     padding: 0.5em;
-    @include flex(1 0 flex-end);
+    @include flex(1 0 auto);
+    @include display-flex(flex);
+    @include align-items(flex-end);
     @include align-self(center);
 }
 
 .build {
-    font-family: $header_fonts;
+    font-family: $header-fonts;
     font-style: italic;
     //font-size: 0.75em;
     font-weight: 100;
 }
 
-.post-header {
-    //padding-top: .75rem;
-    //border-top: 1px solid black;
+.post-meta, .post-categories {
+    font-size: $base-font-size;
+    text-indent: 0;
+}
+
+.post-categories {
+    font-style: italic;
+    &::before {
+        font-style: normal;
+        content: "[";
+    }
+
+    &::after {
+        font-style: normal;
+        content: "]";
+    }
 }
 
 .post-title {
     margin: 0;
-    font-family: $header_fonts;
-    //font-size: 1.45rem;
-    font-weight: 700;
-    letter-spacing: 0.09rem;
-    hyphens: none;
+    padding: 0;
+    font-size: $large-font-size;
+}
+
+.post-title, h1, h2, h3, h4, h5, h6 {
+    font-family: $header-fonts;
+    letter-spacing: 0.07rem;
+    color: $post-title-color;
+    font-weight: 400;
+    @include hyphens(none);
+}
+
+.post-header {
+    padding: 0 0 2em 0;
+}
+
+.posts {
+    .post-header {
+        padding: 0 0 1em 0;
+    }
+    .post-title {
+        line-height: 1.2em;
+        font-size: $medium-font-size;
+        padding-bottom: 0.5em;
+    }
+    .post-meta {
+        font-size: $base-font-size;
+    }
+}
+
+.post-content h1 {
+    font-size: ($large-font-size)-2;
+}
+
+.post-content h2 {
+    font-size: ($large-font-size)-4;
 }
 
 a {
     @include transition(0.4s);
-    color: $link_color;
+    color: $link-color;
     text-decoration: none;
 
     &:focus {
-        color: $link_focus_color;
+        color: $link-focus-color;
     }
     &:hover {
         @extend a:focus;
         //text-decoration: underline;
     }
 }
-
 
 @media screen and (max-width:960px) {
     .posts {
@@ -296,16 +387,20 @@ a {
     .posts>.post {
         max-width: 33%;
     }
+    article.post {
+        max-width: 100%;
+    }
 }
+
 @media screen and (max-width:800px) {
     p {
-        //font-size: 0.9em;
+        /*font-size: 0.9em;*/
     }
     pre {
-        @include force-wrap;
-        //font-size: 0.9em;
+        /*include force-wrap;*/
+        /*font-size: 0.9em;*/
         code {
-            //font-size: 0.9em;
+            /*font-size: 0.9em;*/
             padding: 0.1rem 0.2rem 0.0rem 0.2rem;
         }
     }
@@ -325,6 +420,65 @@ a {
         &:last-of-type {
             border: none;
         }
+    }
+}
+
+@media screen and (max-width:640px) {
+    .site-header {
+        @include flex-direction(column);
+        @include justify-content(flex-start);
+        @include flex(1 0 15%);
+
+        /*height: 6em;*/
+        margin: 0;
+        padding: 0 0.25rem;
+    }
+    .site-title, .site-subtitle {
+        @include flex(1 0 auto);
+        margin: 0;
+        padding: 0 0.25rem;
+    }
+
+    .site-subtitle {
+        font-style: italic;
+    }
+    .site-subtitle::before {
+        font-style: normal;
+        content: "(";
+    }
+    .site-subtitle::after {
+        font-style: normal;
+        content: ")";
+    }
+
+    .navigation a {
+        @include flex(1 0 auto);
+        padding-bottom: 0.5rem;
+    }
+
+    main>.post {
+        font-size: $base-font-size;
+    }
+
+    pre {
+        font-size: $small-font-size;
+    }
+
+    .post-title {
+        font-size: ($medium-font-size)+2;
+    }
+
+    .post-content {
+        h1, h2, h3, h4, h5, h6 {
+            margin: 1em 0 0.5em 0;
+        }
+    }
+
+    .post-content h1 {
+        font-size: $medium-font-size;
+    }
+    .post-content h2 {
+        font-size: ($medium-font-size)-2;
     }
 }
 
