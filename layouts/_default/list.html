@@ -20,23 +20,17 @@
             {{ end }}
 
             {{ if not (.Param "noreadtime") }}
-            <span class="post-reading-time">(<i class="fa fa-clock-o"></i> <em>{{.ReadingTime}} min. read</em>)</span>
-            {{ end }}
-
-            {{ with .Params.categories }}
-            <div class="post-categories">
-                {{ delimit (apply (apply (sort .) "partial" "post/category/link" ".") "chomp" ".") ", " }}
-            </div>
+            <span class="post-reading-time">(&thinsp;<i class="fa fa-clock-o"></i> <em>{{.ReadingTime}} min. read</em>&thinsp;)</span>
             {{ end }}
             </p>
         </header>
         <section class="post-summary">
             {{ .Summary }}
-        {{ if .Truncated }}
-        <div class="read-more-link">
-            <a href="{{ .RelPermalink }}"><span class="read-more-slashes">//</span>Read More...</a>
-        </div>
-        {{ end }}
+            {{ if .Truncated }}
+            <div class="read-more-link">
+                <a href="{{ .RelPermalink }}">Read More&hellip;</a>
+            </div>
+            {{ end }}
         </section>
     </article>
     {{ end }}

@@ -17,7 +17,7 @@
         {{ end }}
 
         {{ if not (.Param "noreadtime") }}
-        <span class="post-reading-time">(<i class="fa fa-clock-o"></i> <em>{{.ReadingTime}} min. read</em>)</span>
+        <span class="post-reading-time">(&hairsp;<i class="fa fa-clock-o"></i> <em>{{.ReadingTime}} min. read</em>&hairsp;)</span>
         {{ end }}
 
         {{ with .Params.categories }}

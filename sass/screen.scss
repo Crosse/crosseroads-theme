@@ -21,14 +21,27 @@ $header-fonts: 'freight-neo-pro', 'Helvetica', 'Arial', sans-serif;
 $main-fonts: 'orpheuspro', serif;
 $code-fonts: 'adaptive-mono', 'Source Code Pro', 'Consolas', 'Inconsolata', 'Monaco' monospace;
 
-$main-font-color: #2d303b;
-$sidebar_background_color: #2d303b;
-$alt_font_color: #7F1000;
-//$sidebar-font-color: #8b8b8b;
-$link-color: #616161;
-$link-focus-color: #E54028;
-$post-title-color: #111111;
+$light-color: #B0B2B9;
+$medium-color: #868997;
+$dark-color: #33374A;
 
+$background-color: #fff;
+$code-background-color: #fff;
+
+$siteheader-color: $light-color;
+$siteheader-background-color: $dark-color;
+$siteheader-subtitle-color: $light-color;
+$siteheader-link-focus-color: $medium-color;
+
+$post-title-color: $light-color;
+$post-heading-color: $dark-color;
+
+$main-font-color: #000;
+
+$link-color: $dark-color;
+$link-focus-color: $medium-color;
+
+$selection-color: #b3d4fc;
 
 /* hide text until fonts have loaded. */
 .wf-loading {
@@ -42,6 +55,7 @@ $post-title-color: #111111;
 html {
     color: $main-font-color;
     font-size: $base-font-size;
+    background-color: $background-color;
 
     text-rendering: optimizeLegibility;
 
@@ -80,11 +94,11 @@ html, p, nav, section, article {
   - https://css-tricks.com/overriding-the-default-text-selection-color-with-css/
 */
 ::-moz-selection {
-    background: #b3d4fc;
+    background: $selection-color;
     text-shadow: none;
 }
 ::selection {
-    background: #b3d4fc;
+    background: $selection-color;
     text-shadow: none;
 }
 
@@ -142,7 +156,7 @@ code {
 }
 
 pre {
-    background-color: #f5f5f5;
+    background-color: $code-background-color;
     font-family: $code-fonts;
     font-size: $code-font-size;
     line-height: 1.55;
@@ -157,16 +171,16 @@ p {
     color: $main-font-color;
     margin: 0 0 0.15rem 0;
     text-indent: 1.35em;
+    text-align: justify;
+    text-justify: inter-word;
 
     code {
-        background-color: #f5f5f5;
+        //background-color: $code-background-color;
         font-family: $code-fonts;
-        padding: 0 0.05rem;
-        border: 1px solid #e5e5e5;
-        @include border-radius(0.15rem);
-    }
-    a {
-        color: $alt_font_color;
+        @include hyphens(none);
+        //padding: 0 0.05rem;
+        //border: 1px solid #e5e5e5;
+        //@include border-radius(0.15rem);
     }
 }
 
@@ -181,7 +195,7 @@ body {
 
 .site-header {
     padding: 1em;
-    background-color: $sidebar_background_color;
+    background-color: $siteheader-background-color;
 
     @include display-flex(flex);
     @include flex-direction(row);
@@ -193,8 +207,11 @@ body {
     a {
         text-decoration: none;
         display: block;
-        color: white;
+        color: $siteheader-color;
         //padding: 0.25em 0.75em;
+    }
+    a:focus, a:hover {
+        color: $siteheader-link-focus-color;
     }
 }
 
@@ -208,7 +225,7 @@ nav {
 .navigation {
     margin: 0;
     padding: 0 0.5em;
-    color: white;
+    color: $siteheader-color;
 
     list-style: none;
     @include flex(1 0 auto);
@@ -241,7 +258,7 @@ nav {
 }
 
 .site-subtitle {
-    color: white;
+    color: $siteheader-subtitle-color;
     font-family: $header-fonts;
     letter-spacing: 0.07em;
     font-weight: 400;
@@ -293,7 +310,7 @@ article {
 
 footer {
     font-size: $small-font-size;
-    color: #8c8c8c;
+    color: $medium-color;
     padding: 0.5em;
     @include flex(1 0 auto);
     @include display-flex(flex);
@@ -311,6 +328,9 @@ footer {
 .post-meta, .post-categories {
     font-size: $base-font-size;
     text-indent: 0;
+    a {
+        text-decoration: none;
+    }
 }
 
 .post-categories {
@@ -335,13 +355,19 @@ footer {
 .post-title, h1, h2, h3, h4, h5, h6 {
     font-family: $header-fonts;
     letter-spacing: 0.07rem;
-    color: $post-title-color;
+    color: $post-heading-color;
     font-weight: 400;
     @include hyphens(none);
 }
 
 .post-header {
     padding: 0 0 2em 0;
+    a {
+        color: $dark-color;
+    }
+    a:focus, a:hover {
+        color: $medium-color;
+    }
 }
 
 .posts {
@@ -349,6 +375,7 @@ footer {
         padding: 0 0 1em 0;
     }
     .post-title {
+        min-height: 3em;
         line-height: 1.2em;
         font-size: $medium-font-size;
         padding-bottom: 0.5em;
@@ -371,13 +398,19 @@ a {
     color: $link-color;
     text-decoration: none;
 
-    &:focus {
+    &:focus, &:hover {
         color: $link-focus-color;
     }
-    &:hover {
-        @extend a:focus;
-        //text-decoration: underline;
-    }
+}
+
+p a {
+    text-decoration: underline;
+}
+
+.read-more-link {
+    font-style: italic;
+    text-align: right;
+    padding-top: 0.5em;
 }
 
 @media screen and (max-width:960px) {
@@ -464,7 +497,8 @@ a {
         font-size: $small-font-size;
     }
 
-    .post-title {
+    .posts .post-title {
+        min-height: 0;
         font-size: ($medium-font-size)+2;
     }
 

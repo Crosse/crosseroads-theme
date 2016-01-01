@@ -11,8 +11,9 @@
 }
 
 html {
-  color: #2d303b;
+  color: #000;
   font-size: 16px;
+  background-color: #fff;
   text-rendering: optimizeLegibility;
   -moz-font-kerning: normal;
   -ms-font-kerning: normal;
@@ -108,7 +109,7 @@ code {
 }
 
 pre {
-  background-color: #f5f5f5;
+  background-color: #fff;
   font-family: "adaptive-mono", "Source Code Pro", "Consolas", "Inconsolata", "Monaco" monospace;
   font-size: 16px;
   line-height: 1.55;
@@ -124,21 +125,18 @@ pre {
 }
 
 p {
-  color: #2d303b;
+  color: #000;
   margin: 0 0 0.15rem 0;
   text-indent: 1.35em;
+  text-align: justify;
+  text-justify: inter-word;
 }
 p code {
-  background-color: #f5f5f5;
   font-family: "adaptive-mono", "Source Code Pro", "Consolas", "Inconsolata", "Monaco" monospace;
-  padding: 0 0.05rem;
-  border: 1px solid #e5e5e5;
-  -moz-border-radius: 0.15rem;
-  -webkit-border-radius: 0.15rem;
-  border-radius: 0.15rem;
-}
-p a {
-  color: #7F1000;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  -webkit-hyphens: none;
+  hyphens: none;
 }
 
 body {
@@ -156,7 +154,7 @@ body {
 
 .site-header {
   padding: 1em;
-  background-color: #2d303b;
+  background-color: #33374A;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: row;
@@ -172,7 +170,10 @@ body {
 .site-header a {
   text-decoration: none;
   display: block;
-  color: white;
+  color: #B0B2B9;
+}
+.site-header a:focus, .site-header a:hover {
+  color: #868997;
 }
 
 nav {
@@ -189,7 +190,7 @@ nav {
 .navigation {
   margin: 0;
   padding: 0 0.5em;
-  color: white;
+  color: #B0B2B9;
   list-style: none;
   -webkit-flex: 1 0 auto;
   flex: 1 0 auto;
@@ -222,7 +223,7 @@ nav {
 }
 
 .site-subtitle {
-  color: white;
+  color: #B0B2B9;
   font-family: "freight-neo-pro", "Helvetica", "Arial", sans-serif;
   letter-spacing: 0.07em;
   font-weight: 400;
@@ -277,7 +278,7 @@ article:first-of-type {
 
 footer {
   font-size: 12px;
-  color: #8c8c8c;
+  color: #868997;
   padding: 0.5em;
   -webkit-flex: 1 0 auto;
   flex: 1 0 auto;
@@ -298,6 +299,9 @@ footer {
 .post-meta, .post-categories {
   font-size: 16px;
   text-indent: 0;
+}
+.post-meta a, .post-categories a {
+  text-decoration: none;
 }
 
 .post-categories {
@@ -321,7 +325,7 @@ footer {
 .post-title, h1, h2, h3, h4, h5, h6 {
   font-family: "freight-neo-pro", "Helvetica", "Arial", sans-serif;
   letter-spacing: 0.07rem;
-  color: #111111;
+  color: #33374A;
   font-weight: 400;
   -moz-hyphens: none;
   -ms-hyphens: none;
@@ -332,11 +336,18 @@ footer {
 .post-header {
   padding: 0 0 2em 0;
 }
+.post-header a {
+  color: #33374A;
+}
+.post-header a:focus, .post-header a:hover {
+  color: #868997;
+}
 
 .posts .post-header {
   padding: 0 0 1em 0;
 }
 .posts .post-title {
+  min-height: 3em;
   line-height: 1.2em;
   font-size: 22px;
   padding-bottom: 0.5em;
@@ -358,11 +369,21 @@ a {
   -o-transition: 0.4s;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: #616161;
+  color: #33374A;
   text-decoration: none;
 }
 a:focus, a:hover {
-  color: #E54028;
+  color: #868997;
+}
+
+p a {
+  text-decoration: underline;
+}
+
+.read-more-link {
+  font-style: italic;
+  text-align: right;
+  padding-top: 0.5em;
 }
 
 @media screen and (max-width: 960px) {
@@ -462,7 +483,8 @@ a:focus, a:hover {
     font-size: 12px;
   }
 
-  .post-title {
+  .posts .post-title {
+    min-height: 0;
     font-size: 24px;
   }
 
