@@ -1,5 +1,5 @@
 {{ partial "header.html" . }}
-<body>
+<body class="hypenate">
 {{ partial "bodybegin.html" . }}
 {{ partial "navbar.html" . }}
 <main>
@@ -20,7 +20,7 @@
             {{ end }}
 
             {{ if not (.Param "noreadtime") }}
-            <span class="post-reading-time">(&thinsp;<i class="fa fa-clock-o"></i> <em>{{.ReadingTime}} min. read</em>&thinsp;)</span>
+            <span class="post-reading-time">(<em>{{.ReadingTime}} min. read</em>&thinsp;)</span>
             {{ end }}
             </p>
         </header>

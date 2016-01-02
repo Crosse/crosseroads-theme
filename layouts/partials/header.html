@@ -1,7 +1,13 @@
 <!doctype html>
-<html lang="en-us">
+{{ if .Site.LanguageCode }} 
+<html lang="{{ .Site.LanguageCode }}">
+{{ else }}
+<html>
+{{ `<!-- languageCode not set in config! -->` | safeHTML }}
+{{ end }}
 <head>
-<meta charset="utf-8"> <!-- Must occur within the first 1024 bytes of content -->
+<meta charset="utf-8">
+
 <!-- Force IE to use the highest available rendering mode. -->
 <!-- Include before all other tags except <title> and <meta> -->
 <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,6 +15,11 @@
 
 <title>{{ .Title }}{{ if ne .Title .Site.Title }} // {{ .Site.Title }}{{ end }}</title>
 
+<!--
+    If you need to add anything at the top of the <head>, copy
+    themes/<theme>/layouts/partials/headbegin.html to
+    layouts/partials/headbegin.html and make local changes there.
+-->
 {{ partial "headbegin.html" . }}
 
 {{ if .Hugo.Generator }}{{ .Hugo.Generator }}{{ end }}
@@ -21,11 +32,33 @@
 
 <!-- Any favicons or touch icons can go here. -->
 
-<!-- Stylesheets go here. -->
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" type='text/css' href="css/screen.css">
+<link rel="stylesheet" href="css/output.min.css">
+
+<!--
+    If you need to add any custom stylesheets, copy
+    themes/<theme>/layouts/partials/stylesheets.html to
+    layouts/partials/stylesheets.html and make local changes there.
+-->
+{{ partial "stylesheets.html" }}
+
+<!--
+    Add "lightbox = true" to your site config file to use
+    Lightbox for images.
+-->
 {{ if .Site.Params.lightbox }}
 <link rel="stylesheet" type="text/css" href="css/lightbox.min.css">
+{{ end }}
+
+<!--
+    Add "highlightjs = true" to your site config file to use
+    Highlight.js for client-side syntax highlighting.
+-->
+{{ if .Site.Params.highlightjs }}
+{{ if isset .Site.Params "highlightStyle" }}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/{{ .Site.Params.highlightStyle }}.min.css">
+{{ else }}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-bright.min.css">
+{{ end }}
 {{ end }}
 
 <!-- HTML5Shiv to enable styling of HTML5 elements in IE < 9 -->
@@ -35,20 +68,23 @@
 <![endif]-->` | safeHTML }}
 
 <!-- RSS -->
-<link href="{{ trim .RSSlink "\"" | relURL }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-
-<!-- Fonts -->
-{{ partial "fonts.html" . }}
-
-<!-- OpenGraph -->
-<meta property="og:title" content="{{ if .Params.ogtitle }}{{ .Params.ogtitle }}{{ else }}{{ .Title }}{{ end }}" />
-<meta property="og:description" content="{{ if .Params.ogdescription }}{{ .Params.ogdescription }}{{ else }}{{ .Description }}{{ end }}" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:url" content="{{ .Permalink }}" />
-{{ if .Params.ogimage }}
-<meta property="og:image" content="{{ .Params.ogimage }}" />
+{{ if .RSSlink }}
+<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+<link href="{{ .RSSlink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
 {{ end }}
 
+<!--
+    If you need to add any webfonts, copy
+    themes/<theme>/layouts/partials/fonts.html to
+    layouts/partials/fonts.html and make local changes there.
+-->
+{{ partial "fonts.html" . }}
+{{ partial "opengraph.html" . }}
+
+<!--
+    If you need to add anything at the bottom of the <head>, copy
+    themes/<theme>/layouts/partials/headend.html to
+    layouts/partials/headend.html and make local changes there.
+-->
 {{ partial "headend.html" . }}
 </head>

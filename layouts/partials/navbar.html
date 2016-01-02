@@ -8,7 +8,7 @@
             {{ range $name, $section := .Site.Sections }}
             {{ if $name }}
             <li><a href="{{ $name | urlize }}">{{ $name | pluralize }}</a></li>
-            <span class="link-separator"></span>
+            <li class="link-separator">|</li>
             {{ end }}
             {{ end }}
         </ul>

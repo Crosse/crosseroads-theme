@@ -36,17 +36,21 @@ $siteheader-link-focus-color: $medium-color;
 $post-title-color: $light-color;
 $post-heading-color: $dark-color;
 
-$main-font-color: #000;
+$main-font-color: #333;
 
-$link-color: $dark-color;
-$link-focus-color: $medium-color;
+$link-color: #980000;
+$link-focus-color: $dark-color;
 
-$selection-color: #b3d4fc;
+//$selection-color: #b3d4fc;
+$selection-color: #000;
+$selection-background-color: $light-color;
 
 /* hide text until fonts have loaded. */
+/*
 .wf-loading {
     visibility: hidden;
 }
+*/
 
 * {
     @include box-sizing(border-box);
@@ -94,11 +98,13 @@ html, p, nav, section, article {
   - https://css-tricks.com/overriding-the-default-text-selection-color-with-css/
 */
 ::-moz-selection {
-    background: $selection-color;
+    //color: $selection-color;
+    background-color: $selection-background-color;
     text-shadow: none;
 }
 ::selection {
-    background: $selection-color;
+    //color: $selection-color;
+    background-color: $selection-background-color;
     text-shadow: none;
 }
 
@@ -150,20 +156,28 @@ textarea {
 
 /* === The preceding was taken from HTML5 Boilerplate's main.css === */
 
+blockquote p {
+    border-left: 5px solid $light-color;
+    padding: 0 0.5em;
+    margin: 1.25rem 2rem 1.25rem 2rem;
+
+    & code {
+        @include hyphens(auto);
+    }
+}
 
 code {
     font-family: $code-fonts;
 }
 
 pre {
-    background-color: $code-background-color;
     font-family: $code-fonts;
     font-size: $code-font-size;
     line-height: 1.55;
     padding: 0.5em;
     margin: 1em 0;
     border: 1px solid #ddd;
-    @include border-radius(0.25rem);
+    @include border-radius(0.35rem);
     @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
 }
 
@@ -175,12 +189,8 @@ p {
     text-justify: inter-word;
 
     code {
-        //background-color: $code-background-color;
         font-family: $code-fonts;
         @include hyphens(none);
-        //padding: 0 0.05rem;
-        //border: 1px solid #e5e5e5;
-        //@include border-radius(0.15rem);
     }
 }
 
@@ -239,11 +249,8 @@ nav {
     & .link-separator {
         padding: 0.25em;
     }
-    & .link-separator::before {
-        content: "|";
-    }
-    & .link-separator:last-of-type::before {
-        content: "";
+    & .link-separator:last-of-type {
+        display: none;
     }
 }
 
@@ -308,6 +315,33 @@ article {
     }
 }
 
+.next-prev-links {
+    margin: 3em 0em 0em 0em;
+    @include display-flex(flex);
+    @include flex-wrap(nowrap);
+    @include align-items(flex-start);
+    @include justify-content(space-between);
+    font-style: italic;
+}
+
+.up-link {
+    @include flex(1 0 auto);
+    font-style: normal;
+    text-align: center;
+    font-size: $base-font-size;
+}
+.prev-link {
+    @include flex(1 0 40%);
+    @include align-items(flex-start);
+    font-size: $base-font-size;
+}
+.next-link {
+    @include flex(1 0 40%);
+    @include align-items(flex-end);
+    text-align: right;
+    font-size: $base-font-size;
+}
+
 footer {
     font-size: $small-font-size;
     color: $medium-color;
@@ -335,15 +369,6 @@ footer {
 
 .post-categories {
     font-style: italic;
-    &::before {
-        font-style: normal;
-        content: "[";
-    }
-
-    &::after {
-        font-style: normal;
-        content: "]";
-    }
 }
 
 .post-title {
@@ -403,9 +428,11 @@ a {
     }
 }
 
+/*
 p a {
     text-decoration: underline;
 }
+*/
 
 .read-more-link {
     font-style: italic;
@@ -423,23 +450,46 @@ p a {
     article.post {
         max-width: 100%;
     }
+    blockquote p {
+        border-left: 5px solid $light-color;
+        padding: 0 0.5em;
+        margin: 1.25rem 0;
+    }
 }
 
 @media screen and (max-width:800px) {
-    p {
-        /*font-size: 0.9em;*/
+    .next-prev-links {
+        @include flex-direction(column);
+        @include flex-wrap(wrap);
+        @include align-items(center);
     }
-    pre {
-        /*include force-wrap;*/
-        /*font-size: 0.9em;*/
-        code {
-            /*font-size: 0.9em;*/
-            padding: 0.1rem 0.2rem 0.0rem 0.2rem;
-        }
+    .next-link, .prev-link, .up-link {
+        display: block;
+        @include flex(1 0 auto);
+        padding: 0.5em 0 0.5em 0;
+    }
+    .prev-link {
+        order: 1;
+    }
+    .next-link {
+        order: 2;
+        text-align: left;
+    };
+    .up-link {
+        order: 3;
+        text-align: center;
+    }
+
+    pre code {
+        padding: 0.1rem 0.2rem 0.0rem 0.2rem;
     }
     .posts {
         @include flex-direction(column);
         @include align-items(center);
+        
+        & .post-title {
+            min-height: 0;
+        }
     }
     .posts>.post {
         @include flex(1 0 auto);
@@ -456,13 +506,13 @@ p a {
     }
 }
 
-@media screen and (max-width:640px) {
+@media screen and (max-width:599px) {
     .site-header {
         @include flex-direction(column);
         @include justify-content(flex-start);
         @include flex(1 0 15%);
 
-        /*height: 6em;*/
+        min-height: 6em;
         margin: 0;
         padding: 0 0.25rem;
     }
@@ -495,11 +545,6 @@ p a {
 
     pre {
         font-size: $small-font-size;
-    }
-
-    .posts .post-title {
-        min-height: 0;
-        font-size: ($medium-font-size)+2;
     }
 
     .post-content {

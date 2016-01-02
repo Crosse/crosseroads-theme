@@ -1,0 +1,12 @@
+<!-- OpenGraph -->
+<meta property="og:title" content="{{ if .Params.ogTitle }}{{ .Params.ogTitle }}{{ else }}{{ .Title }}{{ end }}" />
+<meta property="og:type" content="website" />
+{{ if .Params.ogImage }}
+<meta property="og:image" content="{{ .Params.ogImage }}" />
+{{ end }}
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:description" content="{{ if .Params.ogDescription }}{{ .Params.ogDescription }}{{ else }}{{ .Description }}{{ end }}" />
+{{ if .Params.ogLocale }}
+<meta property="og:locale" content="{{ .Params.ogLocale}}" />
+{{ end }}
+<meta property="og:site_name" content="{{ .Site.Title }}" />

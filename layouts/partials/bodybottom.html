@@ -1,0 +1,32 @@
+<!--
+    Add "highlightjs = true" to your site config file to use
+    Highlight.js for client-side syntax highlighting.
+-->
+{{ if .Site.Params.highlightjs }}
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+{{ end }}
+
+<!--
+    Add "lightbox = true" to your site config file to use
+    Lightbox for images.
+-->
+{{ if .Site.Params.lightbox }}
+<script src="js/lightbox-plus-jquery.min.js"></script>
+{{ end }}
+
+<!--
+    Add your Google Analytics ID ("gaid = UA-...") to your site config
+    file to include the GA tracking code.
+-->
+{{ if .Site.Params.gaid }}
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='https://www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','{{ .Site.Params.gaid }}','auto');ga('send','pageview');
+</script>
+{{ end }}
+

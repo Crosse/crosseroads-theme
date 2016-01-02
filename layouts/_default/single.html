@@ -1,5 +1,5 @@
 {{ partial "header.html" . }}
-<body>
+<body class="hyphenate">
 {{ partial "bodybegin.html" . }}
 {{ partial "navbar.html" . }}
 <main>
@@ -17,20 +17,27 @@
         {{ end }}
 
         {{ if not (.Param "noreadtime") }}
-        <span class="post-reading-time">(&hairsp;<i class="fa fa-clock-o"></i> <em>{{.ReadingTime}} min. read</em>&hairsp;)</span>
+        <span class="post-reading-time">(<em>{{.ReadingTime}} min. read</em>&hairsp;)</span>
         {{ end }}
 
         {{ with .Params.categories }}
         <div class="post-categories">
-            {{ delimit (apply (apply (sort .) "partial" "post/category/link" ".") "chomp" ".") ", " }}
+            Posted in: {{ delimit (apply (apply (sort .) "partial" "post/category/link" ".") "chomp" ".") ", " }}
         </div>
         {{ end }}
         </p>
     </header>
-    </header>
     <section class="post-content">
         {{ .Content }}
     </section>
+
+    {{ if or .Prev .Next }}
+    <nav class="next-prev-links">
+        <div class="prev-link">{{ if .Prev }}<a href="{{ .Prev.RelPermalink }}">&larr;&nbsp;Newer:&nbsp;{{ .Prev.LinkTitle }}</a>{{ end }}</div>
+        <div class="up-link"><a href="{{ .Section | urlize }}">&mdash;Up&mdash;</a></div>
+        <div class="next-link">{{ if .Next }}<a href="{{ .Next.RelPermalink }}">Older:&nbsp;{{ .Next.LinkTitle }}&nbsp;&rarr;</a>{{ end }}</div>
+    </nav>
+    {{ end }}
 </article>
 </main>
 {{ partial "footer.html" . }}
