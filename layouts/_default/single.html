@@ -7,7 +7,7 @@
 <article class="post">
     <header class="post-header">
         <h1 class="post-title">{{.Title}}</h1>
-        <p class="post-meta">
+        <div class="post-meta">
             {{ if not (.Param "nodate") }}
             posted on {{ dateFormat "Jan. 2, 2006" .Date }}
             {{ end }}
@@ -25,7 +25,7 @@
                 Posted in: {{ delimit (apply (apply (sort .) "partial" "post/category/link" ".") "chomp" ".") ", " }}
             </div>
             {{ end }}
-        </p>
+        </div>
     </header>
     <section class="post-content">
         {{ .Content }}
