@@ -16,6 +16,19 @@
 {{ end }}
 
 <!--
+    Add "hyphenator = true" to your site config file to use
+    Hyphenator.js for client-side hyphenation if the browser does not
+    support CSS3's "hyphens" property.
+    See http://caniuse.com/#search=css-hyphens for the current state of
+    hyphenation support in browsers. The gist is that, at the time of
+    this comment, only Chrome and its descendants (Android, Opera) do
+    not support CSS hyphenation.
+-->
+{{ if .Site.Params.hyphenator }}
+<script src="js/Hyphenator_Loader.js"></script>
+{{ end }}
+
+<!--
     Add your Google Analytics ID ("gaid = UA-...") to your site config
     file to include the GA tracking code.
 -->
