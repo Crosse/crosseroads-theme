@@ -15,18 +15,17 @@
         <header class="post-header">
             <h2 class="post-title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h2>
             <p class="post-meta">
+                {{ if not (.Param "nodate") }}
+                posted on {{ dateFormat "Jan. 2, 2006" .Date }}
+                {{ end }}
 
-            {{ if not (.Param "nodate") }}
-            posted on {{ dateFormat "Jan. 2, 2006" .Date }}
-            {{ end }}
+                {{ if and (not (.Param "noauthor")) (.Param "author") }}
+                by {{ if .Param "authorlink" }}<a class="post-author" href="{{ .Param "authorlink" }}">{{ end }}{{ .Param "author"  }}{{ if .Param "authorlink" }}</a>{{ end }}
+                {{ end }}
 
-            {{ if and (not (.Param "noauthor")) (.Param "author") }}
-            by {{ if .Param "authorlink" }}<a class="post-author" href="{{ .Param "authorlink" }}">{{ end }}{{ .Param "author"  }}{{ if .Param "authorlink" }}</a>{{ end }}
-            {{ end }}
-
-            {{ if not (.Param "noreadtime") }}
-            <span class="post-reading-time">(<em>{{.ReadingTime}} min. read</em>&thinsp;)</span>
-            {{ end }}
+                {{ if not (.Param "noreadtime") }}
+                <span class="post-reading-time">(<em>{{.ReadingTime}} min. read</em>&thinsp;)</span>
+                {{ end }}
             </p>
         </header>
         <section class="post-summary">
