@@ -11,14 +11,14 @@
   box-sizing: border-box;
 }
 
-.hyphenate, html, p, nav, section, article, blockquote p code {
+.hyphenate, .post-content, .post-summary {
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
 }
 
-.donthyphenate, p code, .post-title, h1, h2, h3, h4, h5, h6 {
+.donthyphenate, pre, p code, .post-title, h1, h2, h3, h4, h5, h6, .post-header {
   -moz-hyphens: none;
   -ms-hyphens: none;
   -webkit-hyphens: none;

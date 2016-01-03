@@ -7,7 +7,7 @@
     {{ $Site := .Site }}
     {{ range .Data.Pages }}
     <article class="post">
-        <header class="post-header">
+        <header class="post-header donthyphenate">
             <h2 class="post-title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h2>
             <div class="post-meta">
                 {{ if not (.Param "nodate") }}
@@ -23,7 +23,7 @@
                 {{ end }}
             </div>
         </header>
-        <section class="post-summary">
+        <section class="post-summary hyphenate">
             {{ .Summary }}
             {{ if .Truncated }}
             <div class="read-more-link">

@@ -92,7 +92,6 @@ html {
 
 html, p, nav, section, article {
     font-family: $main-fonts;
-    @extend .hyphenate;
 }
 
 /* === The following was taken from HTML5 Boilerplate's main.css === */
@@ -168,10 +167,6 @@ blockquote p {
     border-left: 5px solid $light-color;
     padding: 0 0.5em;
     margin: 1.25rem 2rem 1.25rem 2rem;
-
-    & code {
-        @extend .hyphenate;
-    }
 }
 
 code {
@@ -179,6 +174,7 @@ code {
 }
 
 pre {
+    @extend .donthyphenate;
     font-family: $code-fonts;
     font-size: $code-font-size;
     line-height: 1.55;
@@ -416,6 +412,14 @@ footer {
     .post-meta {
         font-size: $base-font-size;
     }
+}
+
+.post-header {
+    @extend .donthyphenate;
+}
+
+.post-content, .post-summary {
+    @extend .hyphenate;
 }
 
 .post-content h1 {
