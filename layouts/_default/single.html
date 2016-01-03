@@ -33,9 +33,9 @@
 
     {{ if or .Prev .Next }}
     <nav class="next-prev-links">
-        <div class="prev-link">{{ if .Prev }}<a href="{{ .Prev.RelPermalink }}">&larr;&nbsp;Newer:&nbsp;{{ .Prev.LinkTitle }}</a>{{ end }}</div>
+        <div class="prev-link">{{ if .Prev }}<a link="prev" href="{{ .Prev.RelPermalink }}">&larr;&nbsp;Newer:&nbsp;{{ .Prev.LinkTitle }}</a>{{ end }}</div>
         <div class="up-link"><a href="{{ .Section | urlize }}">&mdash;Up&mdash;</a></div>
-        <div class="next-link">{{ if .Next }}<a href="{{ .Next.RelPermalink }}">Older:&nbsp;{{ .Next.LinkTitle }}&nbsp;&rarr;</a>{{ end }}</div>
+        <div class="next-link">{{ if .Next }}<a link="next" href="{{ .Next.RelPermalink }}">Older:&nbsp;{{ .Next.LinkTitle }}&nbsp;&rarr;</a>{{ end }}</div>
     </nav>
     {{ end }}
 </article>
