@@ -86,4 +86,9 @@
     layouts/partials/headend.html and make local changes there.
 -->
 {{ partial "headend.html" . }}
+
+{{ if .IsPage }}
+{{ if .Next }}<link rel="next" content="{{ .Next }}"/>{{ end }}
+{{ if .Prev }}<link rel="prev" content="{{ .Prev }}"/>{{ end }}
+{{ end }}
 </head>
