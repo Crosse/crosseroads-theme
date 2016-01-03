@@ -130,7 +130,7 @@ pre {
   font-size: 16px;
   line-height: 1.55;
   padding: 0.5em;
-  margin: 1em 0;
+  margin: 0 0 1.5em 0;
   border: 1px solid #ddd;
   -moz-border-radius: 0.35rem;
   -webkit-border-radius: 0.35rem;
@@ -143,9 +143,6 @@ pre {
 p {
   color: #333;
   margin: 0 0 0.15rem 0;
-  text-indent: 1.35em;
-  text-align: justify;
-  text-justify: inter-word;
 }
 p code {
   font-family: "adaptive-mono", "Source Code Pro", "Consolas", "Inconsolata", "Monaco" monospace;
@@ -389,6 +386,19 @@ footer {
 }
 .posts .post-meta {
   font-size: 16px;
+}
+
+.post-summary {
+  text-indent: 1.35em;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.post-content p, .post-content pre {
+  margin-bottom: 1em;
+}
+.post-content p:empty {
+  display: none;
 }
 
 .post-content h1 {
