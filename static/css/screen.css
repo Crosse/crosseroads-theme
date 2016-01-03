@@ -11,6 +11,20 @@
   box-sizing: border-box;
 }
 
+.hyphenate, html, p, nav, section, article, blockquote p code {
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.donthyphenate, p code, .post-title, h1, h2, h3, h4, h5, h6 {
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  -webkit-hyphens: none;
+  hyphens: none;
+}
+
 html {
   color: #333;
   font-size: 16px;
@@ -35,10 +49,6 @@ html {
 
 html, p, nav, section, article {
   font-family: "orpheuspro", serif;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
 }
 
 /* === The following was taken from HTML5 Boilerplate's main.css === */
@@ -110,12 +120,6 @@ blockquote p {
   padding: 0 0.5em;
   margin: 1.25rem 2rem 1.25rem 2rem;
 }
-blockquote p code {
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
-}
 
 code {
   font-family: "adaptive-mono", "Source Code Pro", "Consolas", "Inconsolata", "Monaco" monospace;
@@ -145,10 +149,6 @@ p {
 }
 p code {
   font-family: "adaptive-mono", "Source Code Pro", "Consolas", "Inconsolata", "Monaco" monospace;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  -webkit-hyphens: none;
-  hyphens: none;
 }
 
 body {
@@ -366,10 +366,6 @@ footer {
   letter-spacing: 0.07rem;
   color: #33374A;
   font-weight: 400;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  -webkit-hyphens: none;
-  hyphens: none;
 }
 
 .post-header {

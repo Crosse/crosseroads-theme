@@ -56,6 +56,14 @@ $selection-background-color: $light-color;
     @include box-sizing(border-box);
 }
 
+.hyphenate {
+    @include hyphens(auto);
+}
+
+.donthyphenate {
+    @include hyphens(none)
+}
+
 html {
     color: $main-font-color;
     font-size: $base-font-size;
@@ -84,7 +92,7 @@ html {
 
 html, p, nav, section, article {
     font-family: $main-fonts;
-    @include hyphens(auto);
+    @extend .hyphenate;
 }
 
 /* === The following was taken from HTML5 Boilerplate's main.css === */
@@ -162,7 +170,7 @@ blockquote p {
     margin: 1.25rem 2rem 1.25rem 2rem;
 
     & code {
-        @include hyphens(auto);
+        @extend .hyphenate;
     }
 }
 
@@ -190,7 +198,7 @@ p {
 
     code {
         font-family: $code-fonts;
-        @include hyphens(none);
+        @extend .donthyphenate;
     }
 }
 
@@ -382,7 +390,7 @@ footer {
     letter-spacing: 0.07rem;
     color: $post-heading-color;
     font-weight: 400;
-    @include hyphens(none);
+    @extend .donthyphenate;
 }
 
 .post-header {
