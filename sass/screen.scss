@@ -17,7 +17,7 @@ $base-font-size: 16px;
 $medium-font-size: 22px;
 $large-font-size: 32px;
 
-$header-fonts: 'freight-neo-pro', 'Helvetica', 'Arial', sans-serif;
+$header-fonts: 'freight-neo-pro', 'Calibri', 'Helvetica', 'Arial', sans-serif;
 $main-fonts: 'orpheuspro', serif;
 $code-fonts: 'adaptive-mono', 'Source Code Pro', 'Consolas', 'Inconsolata', 'Monaco' monospace;
 
@@ -46,11 +46,9 @@ $selection-color: #000;
 $selection-background-color: $light-color;
 
 /* hide text until fonts have loaded. */
-/*
 .wf-loading {
     visibility: hidden;
 }
-*/
 
 * {
     @include box-sizing(border-box);
@@ -188,7 +186,6 @@ pre {
 p {
     color: $main-font-color;
     margin: 0 0 0.15rem 0;
-    //text-align: justify;
 
     code {
         font-family: $code-fonts;
@@ -424,6 +421,7 @@ footer {
 
 .post-content, .post-summary {
     @extend .hyphenate;
+    line-height: 1.65;
 }
 
 .post-content {
