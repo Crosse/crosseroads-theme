@@ -1,10 +1,9 @@
 @charset "UTF-8";
 /* hide text until fonts have loaded. */
-/*
 .wf-loading {
-    visibility: hidden;
+  visibility: hidden;
 }
-*/
+
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -220,7 +219,7 @@ nav {
 
 .site-title {
   letter-spacing: 0.12em;
-  font-family: "freight-neo-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-neo-pro", "Calibri", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
   -webkit-flex: 0 1 auto;
@@ -230,7 +229,7 @@ nav {
 
 .site-subtitle {
   color: #B0B2B9;
-  font-family: "freight-neo-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-neo-pro", "Calibri", "Helvetica", "Arial", sans-serif;
   letter-spacing: 0.07em;
   font-weight: 400;
   font-size: 1rem;
@@ -335,7 +334,7 @@ footer {
 }
 
 .build {
-  font-family: "freight-neo-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-neo-pro", "Calibri", "Helvetica", "Arial", sans-serif;
   font-style: italic;
   font-weight: 100;
 }
@@ -359,7 +358,7 @@ footer {
 }
 
 .post-title, h1, h2, h3, h4, h5, h6 {
-  font-family: "freight-neo-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-neo-pro", "Calibri", "Helvetica", "Arial", sans-serif;
   letter-spacing: 0.07rem;
   color: #33374A;
   font-weight: 400;
@@ -392,6 +391,10 @@ footer {
   text-indent: 1.35em;
   text-align: justify;
   text-justify: inter-word;
+}
+
+.post-content, .post-summary {
+  line-height: 1.65;
 }
 
 .post-content p, .post-content pre {
