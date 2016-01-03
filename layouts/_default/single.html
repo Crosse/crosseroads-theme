@@ -8,23 +8,23 @@
     <header class="post-header">
         <h1 class="post-title">{{.Title}}</h1>
         <p class="post-meta">
-        {{ if not (.Param "nodate") }}
-        posted on {{ dateFormat "Jan. 2, 2006" .Date }}
-        {{ end }}
+            {{ if not (.Param "nodate") }}
+            posted on {{ dateFormat "Jan. 2, 2006" .Date }}
+            {{ end }}
 
-        {{ if and (not (.Param "noauthor")) (.Param "author") }}
-        by {{ if .Param "authorlink" }}<a class="post-author" href="{{ .Param "authorlink" }}">{{ end }}{{ .Param "author"  }}{{ if .Param "authorlink" }}</a>{{ end }}
-        {{ end }}
+            {{ if and (not (.Param "noauthor")) (.Param "author") }}
+            by {{ if .Param "authorlink" }}<a class="post-author" href="{{ .Param "authorlink" }}">{{ end }}{{ .Param "author"  }}{{ if .Param "authorlink" }}</a>{{ end }}
+            {{ end }}
 
-        {{ if not (.Param "noreadtime") }}
-        <span class="post-reading-time">(<em>{{.ReadingTime}} min. read</em>&hairsp;)</span>
-        {{ end }}
+            {{ if not (.Param "noreadtime") }}
+            <span class="post-reading-time">(<em>{{.ReadingTime}} min. read</em>&hairsp;)</span>
+            {{ end }}
 
-        {{ with .Params.categories }}
-        <div class="post-categories">
-            Posted in: {{ delimit (apply (apply (sort .) "partial" "post/category/link" ".") "chomp" ".") ", " }}
-        </div>
-        {{ end }}
+            {{ with .Params.categories }}
+            <div class="post-categories">
+                Posted in: {{ delimit (apply (apply (sort .) "partial" "post/category/link" ".") "chomp" ".") ", " }}
+            </div>
+            {{ end }}
         </p>
     </header>
     <section class="post-content">
