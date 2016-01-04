@@ -195,7 +195,7 @@ nav {
   align-items: flex-end;
 }
 
-.navigation {
+.navigation, .pagination {
   margin: 0;
   padding: 0 0.5em;
   color: #B0B2B9;
@@ -207,14 +207,38 @@ nav {
   -webkit-justify-content: flex-end;
   justify-content: flex-end;
 }
-.navigation li {
+.navigation li, .pagination li {
   padding: 0.25em;
 }
-.navigation .link-separator {
+.navigation .link-separator, .pagination .link-separator {
   padding: 0.25em;
 }
-.navigation .link-separator:last-of-type {
+.navigation .link-separator:last-of-type, .pagination .link-separator:last-of-type {
   display: none;
+}
+
+.pager-break {
+  width: 60%;
+  color: #868997;
+  -webkit-align-self: center;
+  align-self: center;
+}
+
+.pagination {
+  -webkit-align-self: center;
+  align-self: center;
+}
+.pagination .disabled, .pagination .active {
+  color: #333;
+  pointer-events: none;
+}
+.pagination .active::before, .pagination .active::after {
+  content: "\2014";
+}
+.pagination li {
+  text-align: center;
+  min-width: 2em;
+  font-weight: bold;
 }
 
 .site-title {

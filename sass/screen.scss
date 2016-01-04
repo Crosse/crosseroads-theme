@@ -231,7 +231,7 @@ nav {
     @include align-items(flex-end);
 }
 
-.navigation {
+.navigation, .pagination {
     margin: 0;
     padding: 0 0.5em;
     color: $siteheader-color;
@@ -250,6 +250,30 @@ nav {
     }
     & .link-separator:last-of-type {
         display: none;
+    }
+}
+
+.pager-break {
+    width: 60%;
+    color: $medium-color;
+    @include align-self(center);
+}
+
+.pagination {
+    @include align-self(center);
+    .disabled, .active {
+        color: $main-font-color;
+        pointer-events: none;
+    }
+    .active::before, .active::after {
+        content: "\2014";
+    }
+    li {
+        text-align: center;
+        //margin: 0 0.15em;
+        //padding: 0.15em 0;
+        min-width: 2em;
+        font-weight: bold;
     }
 }
 

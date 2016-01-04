@@ -2,10 +2,11 @@
 <body class="hypenate">
 {{ partial "bodybegin.html" . }}
 {{ partial "navbar.html" . }}
+{{ $paginator := .Paginate .Data.Pages 6 }}
 <main>
 <section class="posts">
     {{ $Site := .Site }}
-    {{ range .Data.Pages }}
+    {{ range $paginator.Pages }}
     <article class="post">
         <header class="post-header donthyphenate">
             <h2 class="post-title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h2>
@@ -35,6 +36,12 @@
     {{ end }}
 </section>
 </main>
+{{ if gt $paginator.TotalPages 1 }}
+<hr class="pager-break" />
+{{ template "_internal/pagination.html" . }}
+{{ range $paginator.Pages }}
+{{ end }}
+{{ end }}
 {{ partial "footer.html" . }}
 {{ partial "bodybottom.html" . }}
 
