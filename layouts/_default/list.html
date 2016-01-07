@@ -1,5 +1,10 @@
 {{ partial "header.html" . }}
 <body class="hyphenate">
+<!--
+    If you need to add anything at the top of the body, copy
+    themes/<theme>/layouts/partials/bodybegin.html to
+    layouts/partials/bodybegin.html and make local changes there.
+-->
 {{ partial "bodybegin.html" . }}
 {{ partial "navbar.html" . }}
 {{ $paginator := .Paginate .Data.Pages 6 }}
@@ -41,6 +46,11 @@
 {{ partial "footer.html" . }}
 {{ partial "bodybottom.html" . }}
 
+<!--
+    If you need to add anything at the bottom of the body, copy
+    themes/<theme>/layouts/partials/bodyend.html to
+    layouts/partials/bodyend.html and make local changes there.
+-->
 {{ partial "bodyend.html" . }}
 </body>
 </html>
