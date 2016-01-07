@@ -39,7 +39,7 @@
 
 {{ if .Param "author" }}
 <div style="display:hidden" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name">{{ .Param "author" }} />
+    <meta itemprop="name" content="{{ .Param "author" }}" />
     {{ if .Param "authorlink" }}
     <meta itemprop="url" content="{{ .Param "authorlink" }}" itemtype="https://schema.org/WebPage" />
     {{ end }}
