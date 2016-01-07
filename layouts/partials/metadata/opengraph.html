@@ -1,3 +1,6 @@
+{{ if .Param "openGraphMetadata" }}
+{{ if .IsPage }}
+
 <!-- OpenGraph -->
 <meta property="og:title" content="{{ .Title }}" />
 <meta property="og:type" content="website" />
@@ -14,3 +17,6 @@
 <meta property="og:locale" content="{{ .Params.ogLocale}}" />
 {{ end }}
 <meta property="og:site_name" content="{{ .Site.Title }}" />
+
+{{ end }}{{/* if .IsPage */}}
+{{ end }}{{/* if .Param "openGraphMetadata" */}}
