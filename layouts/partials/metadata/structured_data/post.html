@@ -17,9 +17,9 @@
 </div>
 {{ end }}
 
-{{ if .Param "sdImage" }}
+{{ if .Param "sdImageUrl" }}
 <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject" style="display:hidden;">
-    <meta itemprop="url" content="{{ .Param "sdImage" }}" />
+    <meta itemprop="url" content="{{ .Site.BaseURL}}/{{ .Param "sdImageUrl" }}" />
     <meta itemprop="width" content="{{ .Param "sdImageWidth" }}" />
     <meta itemprop="height" content="{{ .Param "sdImageHeight" }}" />
 </div>
