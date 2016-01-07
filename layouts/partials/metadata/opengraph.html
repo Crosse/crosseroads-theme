@@ -1,18 +1,18 @@
 {{ if .Param "openGraphMetadata" }}
 {{ if .IsPage }}
 
-<!-- OpenGraph -->
 <meta property="og:title" content="{{ .Title }}" />
 <meta property="og:type" content="website" />
-{{ if .Params.ogImage }}
-<meta property="og:image" content="{{ .Params.ogImage }}" />
-{{ end }}
 <meta property="og:url" content="{{ .Permalink }}" />
-{{ if .Params.ogLocale }}
-<meta property="og:locale" content="{{ .Params.ogLocale}}" />
-{{ end }}
 <meta property="og:site_name" content="{{ .Site.Title }}" />
 
+{{ if .Param "ogImageUrl" }}
+<meta property="og:image" content="{{ .Site.BaseURL }}/{{ .Param "ogImageUrl" }}" />
+{{ end }}
+
+{{ if .Param "ogLocale" }}
+<meta property="og:locale" content="{{ .Param "ogLocale" }}" />
+{{ end }}
 
 <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary }}{{ end }}" />
 
