@@ -25,7 +25,7 @@
 {{ if .Hugo.Generator }}{{ .Hugo.Generator }}{{ end }}
 {{ if .Description }}<meta name="description" content="{{ .Description }}">{{ end }}
 {{ if .Keywords }}<meta name="keywords" content="{{ range .Keywords }}{{ . }},{{ end }}">{{ end }}
-{{ if .Params.author }}<meta name="author" content="{{ .Params.author }}">{{ end }}
+{{ if .Param "author" }}<meta name="author" content="{{ .Param "author" }}">{{ end }}
 
 <!-- Enable responsiveness on mobile devices-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
