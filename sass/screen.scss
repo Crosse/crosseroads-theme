@@ -307,6 +307,7 @@ main {
     @include flex(1 0 auto);
 
     @include display-flex(flex);
+    @include flex-direction(row);
     @include align-items(flex-start);
     @include justify-content(center);
 
@@ -366,6 +367,13 @@ article {
     @include align-items(flex-end);
     text-align: right;
     font-size: $base-font-size;
+}
+
+.comments {
+    @include flex(1 0 auto);
+    @include display-flex(flex);
+    @include flex-direction(column);
+    @include align-content(center);
 }
 
 footer {

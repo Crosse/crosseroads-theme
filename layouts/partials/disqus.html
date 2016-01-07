@@ -1,0 +1,25 @@
+<!--
+    Add your Disqus short name ('DisqusShortname = "..."') to your site
+    config file to include Disqus comments.
+-->
+
+{{ if .Site.DisqusShortname }}
+<div class="comments">
+    <hr class="pager-break" />
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_config=function (){this.page.url={{ .Permalink }};};
+    (function() {
+     /*
+        var h = window.location.hostname;
+        if (h == "localhost" || h == "127.0.0.1") { var e=document.getElementById('disqus_thread'); e.innerHTML = "Disqus placeholder."; return; }
+     */
+     var d = document, s = d.createElement('script');
+     s.src = '//{{ .Site.DisqusShortname }}.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+     })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+{{ end }}

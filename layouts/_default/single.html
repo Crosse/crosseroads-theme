@@ -40,6 +40,8 @@
         <div class="next-link">{{ if .Next }}<a href="{{ .Next.RelPermalink }}">Older:&nbsp;{{ .Next.LinkTitle }}&nbsp;&rarr;</a>{{ end }}</div>
     </nav>
     {{ end }}
+
+    {{ partial "disqus.html" . }}
 </article>
 </main>
 {{ partial "footer.html" . }}
