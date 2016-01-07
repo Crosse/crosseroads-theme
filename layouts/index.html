@@ -41,12 +41,8 @@
     {{ end }}
 </section>
 </main>
-{{ if gt $paginator.TotalPages 1 }}
-<hr class="pager-break" />
-{{ template "_internal/pagination.html" . }}
-{{ range $paginator.Pages }}
-{{ end }}
-{{ end }}
+{{ partial "pagination.html" . }}
+
 {{ partial "footer.html" . }}
 {{ partial "bodybottom.html" . }}
 
