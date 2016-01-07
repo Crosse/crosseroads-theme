@@ -9,10 +9,12 @@
 {{ partial "navbar.html" . }}
 {{ $paginator := .Paginate .Data.Pages 6 }}
 <main>
+{{ partial "metadata/structured_data/site.html" . }}
 <section class="posts">
     {{ $Site := .Site }}
     {{ range $paginator.Pages }}
-    <article class="post">
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        {{ partial "metadata/structured_data/post.html" . }}
         <header class="post-header donthyphenate">
             <h2 class="post-title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h2>
             <div class="post-meta">
