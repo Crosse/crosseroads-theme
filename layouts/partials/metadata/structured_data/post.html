@@ -46,4 +46,8 @@
 </div>
 {{ end }}
 
+{{ if .IsNode }}
+<meta itemprop="description" content="{{ if .Description }}{{ .Description}}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+{{ else }}
 <meta itemprop="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary }}{{ end }}" />
+{{ end }}

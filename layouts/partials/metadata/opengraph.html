@@ -1,5 +1,4 @@
 {{ if .Param "openGraphMetadata" }}
-{{ if .IsPage }}
 
 <meta property="og:title" content="{{ .Title }}" />
 <meta property="og:type" content="website" />
@@ -14,7 +13,10 @@
 <meta property="og:locale" content="{{ .Param "ogLocale" }}" />
 {{ end }}
 
+{{ if .IsNode }}
+<meta property="og:description" content="{{ if .Description }}{{ .Description}}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+{{ else }}
 <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary }}{{ end }}" />
+{{ end }}
 
-{{ end }}{{/* if .IsPage */}}
 {{ end }}{{/* if .Param "openGraphMetadata" */}}

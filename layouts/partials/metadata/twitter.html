@@ -1,5 +1,4 @@
 {{ if .Param "twitterMetadata" }}
-{{ if .IsPage }}
 
 <meta name="twitter:card" content="summary" />
 {{ if .Param "twitterSite" }}
@@ -8,12 +7,23 @@
 <meta name="twitter:site:id" content="{{ .Param "twitterId" }}" />
 {{ end }}
 
+{{ if .IsNode }}
+{{ `<!-- This is a node. -->` | safeHTML }}
+{{ end }}
+{{ if .IsPage }}
+{{ `<!-- This is a page. -->` | safeHTML }}
+{{ end }}
+
 <meta name="twitter:title" content="{{ .Title }}" />
+
+{{ if .IsNode }}
+<meta name="twitter:description" content="{{ if .Description }}{{ .Description}}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+{{ else }}
 <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary }}{{ end }}" />
+{{ end }}
 
 {{ if .Param "twitterImageUrl" }}
 <meta name="twitter:image" content="{{ .Site.BaseURL }}/{{ .Param "twitterImageUrl" }}" />
 {{ end }}
 
-{{ end }}{{/* if .IsPage */}}
 {{ end }}{{/* if .Param "twitterMetadata" */}}
