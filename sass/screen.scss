@@ -373,8 +373,9 @@ footer {
     color: $medium-color;
     padding: 0.5em;
     @include flex(1 0 auto);
-    @include flex-direction(column);
     @include display-flex(flex);
+    @include flex-direction(column);
+    @include justify-content(flex-end);
     @include align-items(center);
     @include align-self(center);
 }
