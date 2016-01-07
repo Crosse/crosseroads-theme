@@ -29,6 +29,10 @@
                 {{ if not (.Param "noreadtime") }}
                 <span class="post-reading-time">(<em>{{.ReadingTime}} min. read</em>&thinsp;)</span>
                 {{ end }}
+
+                {{ if and .Site.DisqusShortname (not (.Param "nocommentcount")) }}
+                <a class="comment-count" href="{{ .Permalink }}#disqus_thread"></a>
+                {{ end }}
             </div>
         </header>
         <section class="post-summary hyphenate">
@@ -47,6 +51,7 @@
 
 {{ partial "footer.html" . }}
 {{ partial "bodybottom.html" . }}
+{{ partial "disqus.html" . }}
 
 <!--
     If you need to add anything at the bottom of the body, copy
