@@ -1,0 +1,49 @@
+<meta itemscope itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="{{ .Permalink }}" />
+<meta itemprop="headline" content="{{.Title}}" />
+<meta itemprop="name" content="{{.Title}}" />
+<meta itemprop="datePublished" content="{{ dateFormat "2006-01-02 15:04:05 -0700" .Date }}" />
+<meta itemprop="dateModified" content="{{ if .Params.datemodified }}{{ dateFormat "2006-01-02 15:04:05 -0700" .Params.datemodified }}{{ else }}{{ dateFormat "2006-01-02 15:04:05 -0700" .Date }}{{ end }}" />
+<meta itemprop="inLanguage" content="{{ if .Param "language" }}{{ .Param "language" }}{{ else }}{{ .Site.LanguageCode }}{{ end }}" />
+<meta itemprop="timeRequired" content="PT{{ .ReadingTime }}M" />
+<meta itemprop="wordCount" content="{{ .WordCount }}" />
+
+<meta itemprop="copyrightYear" content="{{ dateFormat "2006" .Date }}" />
+{{ if .Param "author" }}
+<div style="display:hidden" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name">{{ .Param "author" }} />
+    {{ if .Param "authorlink" }}
+    <meta itemprop="url" content="{{ .Param "authorlink" }}" itemtype="https://schema.org/WebPage" />
+    {{ end }}
+</div>
+{{ end }}
+
+{{ if .Param "sdImage" }}
+<div itemprop="image" itemscope itemtype="https://schema.org/ImageObject" style="display:hidden;">
+    <meta itemprop="url" content="{{ .Param "sdImage" }}" />
+    <meta itemprop="width" content="{{ .Param "sdImageWidth" }}" />
+    <meta itemprop="height" content="{{ .Param "sdImageHeight" }}" />
+</div>
+{{ end }}
+
+{{ if .Keywords }}
+<meta itemprop="keywords" content="{{ .Keywords }}" />
+{{ else if .Params.tags }}
+<meta itemprop="keywords" content="{{ delimit .Params.tags ", " }}" />
+{{ else if .Params.categories }}
+<meta itemprop="keywords" content="{{ delimit .Params.categories ", " }}" />
+{{ end }}
+
+{{ if .Param "creativeCommonsLicense" }}
+<meta itemprop="license" itemtype="https://schema.org/WebPage" content="http://creativecommons.org/licenses/{{ .Param "creativeCommonsLicense" }}/4.0/" />
+{{ end }}
+
+{{ if .Param "author" }}
+<div style="display:hidden" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name">{{ .Param "author" }} />
+    {{ if .Param "authorlink" }}
+    <meta itemprop="url" content="{{ .Param "authorlink" }}" itemtype="https://schema.org/WebPage" />
+    {{ end }}
+</div>
+{{ end }}
+
+<meta itemprop="description" content="{{ .Summary }}" />
