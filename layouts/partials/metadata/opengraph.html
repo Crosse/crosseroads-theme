@@ -5,7 +5,11 @@
 <meta property="og:image" content="{{ .Params.ogImage }}" />
 {{ end }}
 <meta property="og:url" content="{{ .Permalink }}" />
+{{ if or .Params.ogDescription .Description }}
 <meta property="og:description" content="{{ if .Params.ogDescription }}{{ .Params.ogDescription }}{{ else }}{{ .Description }}{{ end }}" />
+{{ else if .IsPage }}
+<meta property="og:description" content="{{ .Summary }}" />
+{{ end }}
 {{ if .Params.ogLocale }}
 <meta property="og:locale" content="{{ .Params.ogLocale}}" />
 {{ end }}
