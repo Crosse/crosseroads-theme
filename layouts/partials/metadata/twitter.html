@@ -1,0 +1,19 @@
+{{ if .Param "twitterMetadata" }}
+{{ if .IsPage }}
+
+<meta name="twitter:card" content="summary" />
+{{ if .Param "twitterSite" }}
+<meta name="twitter:site" content="{{ .Param "twitterSiteId" }}" />
+{{ else if .Param "twitterId" }}
+<meta name="twitter:site:id" content="{{ .Param "twitterId" }}" />
+{{ end }}
+
+<meta name="twitter:title" content="{{ .Title }}" />
+<meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary }}{{ end }}" />
+
+{{ if .Param "twitterImageUrl" }}
+<meta name="twitter:image" content="{{ .Site.BaseURL }}/{{ .Param "twitterImageUrl" }}" />
+{{ end }}
+
+{{ end }}{{/* if .IsPage */}}
+{{ end }}{{/* if .Param "twitterMetadata" */}}
