@@ -72,10 +72,6 @@
 <link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
 {{ end }}
 
-{{ if .IsNode }}
-<link href="{{ .URL }}" rel="canonical" title="{{ .Title }}" />
-{{ end }}
-
 <!--
     If you need to add any webfonts, copy
     themes/<theme>/layouts/partials/fonts.html to
