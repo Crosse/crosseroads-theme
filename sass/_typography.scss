@@ -1,0 +1,27 @@
+* {
+    text-rendering: optimizeLegibility;
+}
+
+@mixin font-kerning($value) {
+    -moz-font-kerning: $value;
+    -ms-font-kerning: $value;
+    -o-font-kerning: $value;
+    -webkit-font-kerning: $value;
+    font-kerning: $value;
+}
+
+@mixin font-variant-ligatures($values...) {
+    -moz-font-variant-ligatures: $values;
+    -ms-font-variant-ligatures: $values;
+    -o-font-variant-ligatures: $values;
+    -webkit-font-variant-ligatures: $values;
+    font-variant-ligatures: $values;
+}
+
+@mixin font-feature-settings($values...) {
+    -moz-font-feature-settings: $values;
+    -ms-font-feature-settings: $values;
+    -o-font-feature-settings: $values;
+    -webkit-font-feature-settings: $values;
+    font-feature-settings: $values;
+}

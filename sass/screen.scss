@@ -11,6 +11,7 @@
 @import "normalize";
 
 //@import "fonts";
+@import "typography";
 @import "underline";
 
 $tiny-font-size: 8px;
@@ -70,25 +71,9 @@ html {
     font-size: $base-font-size;
     background-color: $background-color;
 
-    text-rendering: optimizeLegibility;
-
-    -moz-font-kerning: normal;
-    -ms-font-kerning: normal;
-    -o-font-kerning: normal;
-    -webkit-font-kerning: normal;
-    font-kerning: normal;
-
-    -moz-font-variant-ligatures: common-ligatures, contextual;
-    -ms-font-variant-ligatures: common-ligatures, contextual;
-    -o-font-variant-ligatures: common-ligatures, contextual;
-    -webkit-font-variant-ligatures: common-ligatures;
-    font-variant-ligatures: common-ligatures, contextual;
-
-    -moz-font-feature-settings: "kern", "liga", "clig", "calt";
-    -ms-font-feature-settings: "kern", "liga", "clig", "calt";
-    -o-font-feature-settings: "kern", "liga", "clig", "calt";
-    -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
-    font-feature-settings: "kern", "liga", "clig", "calt";
+    @include font-kerning(normal);
+    @include font-variant-ligatures(common-ligatures, contextual);
+    @include font-feature-settings("kern", "liga", "clig", "calt");
 }
 
 html, p, nav, section, article {
