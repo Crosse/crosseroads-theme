@@ -30,14 +30,22 @@
                 <span class="post-reading-time">(<em>{{.ReadingTime}} min. read</em>&thinsp;)</span>
                 {{ end }}
             </div>
+            {{ if and .Site.DisqusShortname (not (.Param "nocommentcount")) }}
+            <div class="comment-count">
+                <a href="{{ .Permalink }}#disqus_thread">0 Comments</a>
+            </div>
+            {{ end }}
         </header>
         <section class="post-summary hyphenate">
             {{ .Summary }}
-            {{ if .Truncated }}
-            <div class="read-more-link">
-                <a href="{{ .RelPermalink }}">Read More&hellip;</a>
+
+            <div class="post-summary-end">
+                {{ if .Truncated }}
+                <div class="read-more-link">
+                    <a href="{{ .RelPermalink }}">Read More&hellip;</a>
+                </div>
+                {{ end }}
             </div>
-            {{ end }}
         </section>
     </article>
     {{ end }}

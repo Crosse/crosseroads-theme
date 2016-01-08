@@ -29,19 +29,23 @@
                 {{ if not (.Param "noreadtime") }}
                 <span class="post-reading-time">(<em>{{.ReadingTime}} min. read</em>&thinsp;)</span>
                 {{ end }}
-
-                {{ if and .Site.DisqusShortname (not (.Param "nocommentcount")) }}
-                <a class="comment-count" href="{{ .Permalink }}#disqus_thread"></a>
-                {{ end }}
             </div>
         </header>
         <section class="post-summary hyphenate">
             {{ .Summary }}
-            {{ if .Truncated }}
-            <div class="read-more-link">
-                <a href="{{ .RelPermalink }}">Read More&hellip;</a>
+
+            <div class="post-summary-end">
+                {{ if and .Site.DisqusShortname (not (.Param "nocommentcount")) }}
+                <div class="comment-count">
+                    <a href="{{ .Permalink }}#disqus_thread">0 Commgentjs</a>
+                </div>
+                {{ end }}
+                {{ if .Truncated }}
+                <div class="read-more-link">
+                    <a href="{{ .RelPermalink }}">Read More&hellip;</a>
+                </div>
+                {{ end }}
             </div>
-            {{ end }}
         </section>
     </article>
     {{ end }}
