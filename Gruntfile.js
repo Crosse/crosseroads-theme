@@ -24,9 +24,9 @@ module.exports = function(grunt) {
             options: {
                 sourceMap: true
             },
-            target: {
+            dist: {
                 files: {
-                    'static/css/screen.css': 'static/css/screen.css'
+                    'static/css/screen.min.css': 'static/css/screen.css'
                 }
             }
         },
@@ -35,5 +35,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('default', ['compass:dist', 'cssmin']);
+    grunt.registerTask('default', 'Build the theme.', ['compass:dist', 'cssmin']);
 };
