@@ -9,6 +9,7 @@
 @import "compass/typography/vertical_rhythm";
 
 //@import "fonts";
+@import "underline";
 
 $tiny-font-size: 8px;
 $small-font-size: 12px;
@@ -120,7 +121,7 @@ hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #dark-color;
     margin: 1em 0;
     padding: 0;
 }
@@ -178,7 +179,7 @@ pre {
     line-height: 1.55;
     padding: 0.5em;
     margin: 0 0 1.5em 0;
-    border: 1px solid #ddd;
+    border: 1px solid $dark-color;
     @include border-radius(0.35rem);
     @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
 }
@@ -398,9 +399,11 @@ footer {
 .post-meta, .post-categories {
     font-size: $base-font-size;
     text-indent: 0;
+    /*
     a {
         text-decoration: none;
     }
+    */
 }
 
 .post-categories {
@@ -452,6 +455,26 @@ footer {
     text-justify: inter-word;
 }
 
+.post-summary-end {
+    @include flex(1 0 auto);
+    @include display-flex(flex);
+    @include flex-direction(row);
+    @include align-items(baseline);
+    text-indent: 0;
+    padding-top: 1em;
+}
+
+.comment-count {
+    @include flex(1 0 auto);
+    font-size: $small-font-size;
+}
+
+.read-more-link {
+    @include flex (1 0 auto);
+    font-style: italic;
+    text-align: right;
+}
+
 .post-header {
     @extend .donthyphenate;
 }
@@ -479,25 +502,13 @@ footer {
 }
 
 a {
-    @include transition(0.4s);
     color: $link-color;
-    text-decoration: none;
+    @include transition(0.4s);
+    @include underline($background-color, $link-color, $selection-background-color, $selection-color);
 
     &:focus, &:hover {
         color: $link-focus-color;
     }
-}
-
-/*
-p a {
-    text-decoration: underline;
-}
-*/
-
-.read-more-link {
-    font-style: italic;
-    text-align: right;
-    padding-top: 0.5em;
 }
 
 @media screen and (max-width:960px) {
@@ -558,7 +569,7 @@ p a {
 
         &, &:first-of-type {
             border: none;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid $dark-color;
         }
         &:last-of-type {
             border: none;

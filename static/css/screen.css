@@ -76,7 +76,7 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #dark-color;
   margin: 1em 0;
   padding: 0;
 }
@@ -130,7 +130,7 @@ pre {
   line-height: 1.55;
   padding: 0.5em;
   margin: 0 0 1.5em 0;
-  border: 1px solid #ddd;
+  border: 1px solid #33374A;
   -moz-border-radius: 0.35rem;
   -webkit-border-radius: 0.35rem;
   border-radius: 0.35rem;
@@ -386,9 +386,11 @@ footer {
 .post-meta, .post-categories {
   font-size: 16px;
   text-indent: 0;
-}
-.post-meta a, .post-categories a {
-  text-decoration: none;
+  /*
+  a {
+      text-decoration: none;
+  }
+  */
 }
 
 .post-categories {
@@ -437,6 +439,32 @@ footer {
   text-justify: inter-word;
 }
 
+.post-summary-end {
+  -webkit-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: baseline;
+  align-items: baseline;
+  text-indent: 0;
+  padding-top: 1em;
+}
+
+.comment-count {
+  -webkit-flex: 1 0 auto;
+  flex: 1 0 auto;
+  font-size: 12px;
+}
+
+.read-more-link {
+  -webkit-flex: 1 0 auto;
+  flex: 1 0 auto;
+  font-style: italic;
+  text-align: right;
+}
+
 .post-content, .post-summary {
   line-height: 1.65;
 }
@@ -457,26 +485,43 @@ footer {
 }
 
 a {
+  color: #980000;
   -moz-transition: 0.4s;
   -o-transition: 0.4s;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  color: #980000;
   text-decoration: none;
+  /*
+   * Taken somewhat liberally from
+   * https://eager.io/blog/smarter-link-underlines/
+   */
+  text-shadow: 0.03em 0 #fff, -0.03em 0 #fff, 0 0.03em #fff, 0 -0.03em #fff, 0.06em 0 #fff, -0.06em 0 #fff, 0.09em 0 #fff, -0.09em 0 #fff, 0.12em 0 #fff, -0.12em 0 #fff, 0.15em 0 #fff, -0.15em 0 #fff;
+  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#ffffff, #ffffff), linear-gradient(#980000, #980000);
+  background-size: .05rem 1px, .05rem 1px, 1px 1px;
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  background-position: 0% 90%, 100% 90%, 0 1.3em;
+}
+a::selection {
+  /*
+   * Taken somewhat liberally from
+   * https://eager.io/blog/smarter-link-underlines/
+   */
+  text-shadow: 0.03em 0 #B0B2B9, -0.03em 0 #B0B2B9, 0 0.03em #B0B2B9, 0 -0.03em #B0B2B9, 0.06em 0 #B0B2B9, -0.06em 0 #B0B2B9, 0.09em 0 #B0B2B9, -0.09em 0 #B0B2B9, 0.12em 0 #B0B2B9, -0.12em 0 #B0B2B9, 0.15em 0 #B0B2B9, -0.15em 0 #B0B2B9;
+  background: #B0B2B9;
+}
+a::-moz-selection {
+  /*
+   * Taken somewhat liberally from
+   * https://eager.io/blog/smarter-link-underlines/
+   */
+  text-shadow: 0.03em 0 #B0B2B9, -0.03em 0 #B0B2B9, 0 0.03em #B0B2B9, 0 -0.03em #B0B2B9, 0.06em 0 #B0B2B9, -0.06em 0 #B0B2B9, 0.09em 0 #B0B2B9, -0.09em 0 #B0B2B9, 0.12em 0 #B0B2B9, -0.12em 0 #B0B2B9, 0.15em 0 #B0B2B9, -0.15em 0 #B0B2B9;
+  background: #B0B2B9;
+}
+a:before, a:after, a *, a *:before, a *:after {
+  text-shadow: none;
 }
 a:focus, a:hover {
   color: #33374A;
-}
-
-/*
-p a {
-    text-decoration: underline;
-}
-*/
-.read-more-link {
-  font-style: italic;
-  text-align: right;
-  padding-top: 0.5em;
 }
 
 @media screen and (max-width: 960px) {
@@ -552,7 +597,7 @@ p a {
   }
   .posts > .post, .posts > .post:first-of-type {
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #33374A;
   }
   .posts > .post:last-of-type {
     border: none;
