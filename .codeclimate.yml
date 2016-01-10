@@ -27,5 +27,5 @@ ratings:
   - "**.py"
   - "**.rb"
 exclude_paths:
-  - "**/Hypenator*"
+  - "**/Hyphenator*"
   - "**/lightbox*"
