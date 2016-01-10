@@ -488,7 +488,7 @@ footer {
     font-size: ($large-font-size)-4;
 }
 
-a {
+main a, footer a {
     color: $link-color;
     @include transition(0.4s);
     @include underline($background-color, $link-color, $selection-background-color, $selection-color);
