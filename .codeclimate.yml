@@ -27,5 +27,6 @@ ratings:
   - "**.py"
   - "**.rb"
 exclude_paths:
-  - "**/Hyphenator*"
-  - "**/lightbox*"
+  - "static/**/Hyphenator*"
+  - "static/js/patterns/**/*"
+  - "static/**/lightbox*"
