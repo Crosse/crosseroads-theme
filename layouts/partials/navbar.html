@@ -3,6 +3,7 @@
     {{ if .Site.Params.SiteTagline }}
     <span class="site-subtitle">{{ .Site.Params.SiteTagline }}</span>
     {{ end }}
+    {{ partial "social.html" . }}
     <nav>
         <ul class="navigation">
             {{ range $name, $section := .Site.Sections }}

@@ -1,0 +1,22 @@
+{{ if .Site.Params.showSocial }}
+<span class="social">
+    {{ if .Site.Params.twitterId }}
+    <a href="https://twitter.com/{{ trim .Site.Params.twitterId "@" }}"><i class='fa fa-fw fa-twitter'></i></a>
+    {{ end }}
+    {{ if .Site.Params.twitterSite }}
+    <a href="https://twitter.com/{{ trim .Site.Params.twitterSite "@" }}"><i class='fa fa-fw fa-twitter'></i></a>
+    {{ end }}
+    {{ if .Site.Params.githubProfile }}
+    <a href="https://github.com/{{ .Site.Params.githubProfile }}"><i class='fa fa-fw fa-github'></i></a>
+    {{ end }}
+    {{ if .Site.Params.bitbucketProfile }}
+    <a href="https://bitbucket.org/{{ .Site.Params.bitbucketProfile }}"><i class='fa fa-fw fa-bitbucket'></i></a>
+    {{ end }}
+    {{ if .Site.Params.linkedinProfile }}
+    <a href="https://www.linkedin.com/in/{{ .Site.Params.linkedinProfile }}"><i class='fa fa-fw fa-linkedin'></i></a>
+    {{ end }}
+    {{ if .Site.Params.googleProfile }}
+    <a href="https://google.com/{{ .Site.Params.googleProfile }}"><i class='fa fa-fw fa-google-plus'></i></a>
+    {{ end }}
+</span>
+{{ end }}
