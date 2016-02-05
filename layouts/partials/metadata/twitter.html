@@ -7,13 +7,6 @@
 <meta name="twitter:site:id" content="{{ .Param "twitterId" }}" />
 {{ end }}
 
-{{ if .IsNode }}
-{{ `<!-- This is a node. -->` | safeHTML }}
-{{ end }}
-{{ if .IsPage }}
-{{ `<!-- This is a page. -->` | safeHTML }}
-{{ end }}
-
 <meta name="twitter:title" content="{{ .Title }}" />
 
 {{ if .IsNode }}
