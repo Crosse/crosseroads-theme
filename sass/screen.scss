@@ -290,6 +290,12 @@ nav {
     }
 }
 
+.social {
+    @include flex(0 1 auto);
+    @include display-flex(flex);
+    @include flex-direction(row);
+}
+
 main {
     margin: 1em 0.5em 0em 0.5em;
     @include flex(1 0 auto);
