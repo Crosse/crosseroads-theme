@@ -1,0 +1,11 @@
+{{ if .Param "twitterSite" }}
+<link rel="me" href="https://twitter.com/{{ trim (.Param "twitterSiteId") "@" }}" />
+{{ else if .Param "twitterId" }}
+<link rel="me" href="https://twitter.com/{{ trim (.Param "twitterId") "@" }}" />
+{{ end }}
+
+{{ if .Param "githubProfile" }}<link rel="me" href="https://github.com/{{ .Param "githubProfile" }}" />{{ end }}
+{{ if .Param "bitbucketProfile" }}<link rel="me" href="https://bitbucket.org/{{ .Param "bitbucketProfile" }}" />{{ end }}
+{{ if .Param "linkedinProfile" }}<link rel="me" href="https://www.linkedin.com/in/{{ .Param "linkedinProfile" }}" />{{ end }}
+{{ if .Param "facebookProfile" }}<link rel="me" href="https://facebook.com/{{ .Param "facebookProfile" }}" />{{ end }}
+{{ if .Param "googleProfile" }}<link rel="me" href="https://google.com/+{{ .Param "googleProfile" }}" />{{ end }}
