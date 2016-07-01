@@ -13,6 +13,7 @@
 //@import "fonts";
 @import "typography";
 @import "underline";
+@import "headings";
 
 $tiny-font-size: 8px;
 $small-font-size: 12px;
@@ -522,16 +523,31 @@ footer {
     }
 }
 
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+    margin: 2.0em 0 0.5em 0;
+    @include font-feature-settings("kern", "liga", "clig", "calt", "pnum" off, "tnum" off, "lnum" on);
+}
+
 .post-content h1 {
-    font-size: ($large-font-size)-2;
+    $font-size: ($large-font-size)-2;
+    $line-height: 1.65;
 }
 
 .post-content h2 {
-    font-size: ($large-font-size)-4;
+    $font-size: ($large-font-size)-4;
+    $line-height: 1.65;
+    @include header-line($font-size, $line-height);
 }
 
 .post-content h3 {
-    font-size: ($large-font-size)-6;
+    $font-size: ($large-font-size)-6;
+    $line-height: 1.65;
+    //@include header-line($font-size, $line-height);
 }
 
 main a, footer a {
@@ -653,18 +669,24 @@ main a, footer a {
 
     .post-content {
         h1, h2, h3, h4, h5, h6 {
-            margin: 1em 0 0.5em 0;
+            margin: 1.5rem 0 1.0rem 0;
         }
     }
 
     .post-content h1 {
-        font-size: $medium-font-size;
+        $font-size: $medium-font-size;
+        $line-height: 1.65;
+        @include header-line($font-size, $line-height);
     }
     .post-content h2 {
-        font-size: ($medium-font-size)-2;
+        $font-size: ($medium-font-size)-2;
+        $line-height: 1.65;
+        @include header-line($font-size, $line-height);
     }
     .post-content h3 {
-        font-size: ($medium-font-size)-4;
+        $font-size: ($medium-font-size)-4;
+        $line-height: 1.65;
+        @include header-line($font-size, $line-height);
     }
 }
 

@@ -1,0 +1,16 @@
+@mixin header-line($font-size, $line-height) {
+    font-size: $font-size;
+    line-height: $line-height;
+
+    display: table;
+    white-space: nowrap;
+    &:after {
+      border-top: 1px solid $light-color;
+      content: '';
+      display: table-cell;
+      position: relative;
+      top: $font-size * $line-height / 2;
+      width: 100%;
+    }
+    &:after { left: 0.5%; }
+}
