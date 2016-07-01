@@ -243,7 +243,7 @@ th {
   hyphens: auto;
 }
 
-.donthyphenate, pre, p code, .post-title, h1, h2, h3, h4, h5, h6, .post-header {
+.donthyphenate, pre, p code, table, th, .post-title, h1, h2, h3, h4, h5, h6, .post-header {
   -ms-hyphens: none;
   -webkit-hyphens: none;
   hyphens: none;
@@ -261,10 +261,10 @@ html {
   -o-font-variant-ligatures: common-ligatures, contextual;
   -webkit-font-variant-ligatures: common-ligatures, contextual;
   font-variant-ligatures: common-ligatures, contextual;
-  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
-  -o-font-feature-settings: "kern", "liga", "clig", "calt";
-  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
-  font-feature-settings: "kern", "liga", "clig", "calt";
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt", "pnum", "onum", "tnum" off, "lnum" off;
+  -o-font-feature-settings: "kern", "liga", "clig", "calt", "pnum", "onum", "tnum" off, "lnum" off;
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt", "pnum", "onum", "tnum" off, "lnum" off;
+  font-feature-settings: "kern", "liga", "clig", "calt", "pnum", "onum", "tnum" off, "lnum" off;
 }
 
 html, p, nav, section, article {
@@ -342,11 +342,11 @@ blockquote p {
 }
 
 code {
-  font-family: "adaptive-mono", "Source Code Pro", "Consolas", "Inconsolata", "Monaco" monospace;
+  font-family: "adaptive-mono", "Source Code Pro", "Consolas", "Inconsolata", "Monaco", monospace;
 }
 
 pre {
-  font-family: "adaptive-mono", "Source Code Pro", "Consolas", "Inconsolata", "Monaco" monospace;
+  font-family: "adaptive-mono", "Source Code Pro", "Consolas", "Inconsolata", "Monaco", monospace;
   font-size: 16px;
   line-height: 1.55;
   padding: 0.5em;
@@ -361,7 +361,7 @@ p {
   margin: 0 0 0.15rem 0;
 }
 p code {
-  font-family: "adaptive-mono", "Source Code Pro", "Consolas", "Inconsolata", "Monaco" monospace;
+  font-family: "adaptive-mono", "Source Code Pro", "Consolas", "Inconsolata", "Monaco", monospace;
 }
 
 body {
@@ -379,6 +379,40 @@ body {
       -ms-flex-line-pack: end;
           align-content: flex-end;
   height: 100vh;
+}
+
+table {
+  border: 1px solid #33374A;
+  font-variant-numeric: lining-nums tabular-nums;
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt", "lnum", "tnum", "pnum" off;
+  -o-font-feature-settings: "kern", "liga", "clig", "calt", "lnum", "tnum", "pnum" off;
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt", "lnum", "tnum", "pnum" off;
+  font-feature-settings: "kern", "liga", "clig", "calt", "lnum", "tnum", "pnum" off;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  padding: 0.5em;
+  margin: 0 0 1.5em 0;
+}
+
+thead {
+  border: 1px solid #33374A;
+}
+
+th, td {
+  padding: 0.25rem 0.5rem;
+}
+
+td {
+  font-family: "adaptive-mono", "Source Code Pro", "Consolas", "Inconsolata", "Monaco", monospace;
+  line-height: 1.55;
+  border-bottom: 1px solid #B0B2B9;
+}
+
+th {
+  font-family: "freight-neo-pro", "Calibri", "Helvetica", "Arial", sans-serif;
+  letter-spacing: 0.09rem;
+  font-weight: 700;
+  color: #33374A;
+  background: #B0B2B9;
 }
 
 .site-header {
@@ -763,19 +797,38 @@ footer {
   display: none;
 }
 
-.post-content h1 {
-  font-size: 30px;
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  margin: 2.0em 0 0.5em 0;
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt", "pnum" off, "tnum" off, "lnum" on;
+  -o-font-feature-settings: "kern", "liga", "clig", "calt", "pnum" off, "tnum" off, "lnum" on;
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt", "pnum" off, "tnum" off, "lnum" on;
+  font-feature-settings: "kern", "liga", "clig", "calt", "pnum" off, "tnum" off, "lnum" on;
 }
 
 .post-content h2 {
   font-size: 28px;
+  line-height: 1.65;
+  display: table;
+  white-space: nowrap;
+}
+.post-content h2:after {
+  border-top: 1px solid #B0B2B9;
+  content: '';
+  display: table-cell;
+  position: relative;
+  top: 23.1px;
+  width: 100%;
+}
+.post-content h2:after {
+  left: 0.5%;
 }
 
-.post-content h3 {
-  font-size: 26px;
-}
-
-main a, footer a {
+main a, footer a, .pagination a {
   color: #980000;
   transition: 0.4s;
   text-decoration: none;
@@ -789,7 +842,7 @@ main a, footer a {
   background-repeat: no-repeat, no-repeat, repeat-x;
   background-position: 0% 90%, 100% 90%, 0 85%;
 }
-main a::-moz-selection, footer a::-moz-selection {
+main a::-moz-selection, footer a::-moz-selection, .pagination a::-moz-selection {
   /*
    * Taken somewhat liberally from
    * https://eager.io/blog/smarter-link-underlines/
@@ -797,7 +850,7 @@ main a::-moz-selection, footer a::-moz-selection {
   text-shadow: 0.03em 0 #B0B2B9, -0.03em 0 #B0B2B9, 0 0.03em #B0B2B9, 0 -0.03em #B0B2B9, 0.06em 0 #B0B2B9, -0.06em 0 #B0B2B9, 0.09em 0 #B0B2B9, -0.09em 0 #B0B2B9, 0.12em 0 #B0B2B9, -0.12em 0 #B0B2B9, 0.15em 0 #B0B2B9, -0.15em 0 #B0B2B9;
   background: #B0B2B9;
 }
-main a::selection, footer a::selection {
+main a::selection, footer a::selection, .pagination a::selection {
   /*
    * Taken somewhat liberally from
    * https://eager.io/blog/smarter-link-underlines/
@@ -805,7 +858,7 @@ main a::selection, footer a::selection {
   text-shadow: 0.03em 0 #B0B2B9, -0.03em 0 #B0B2B9, 0 0.03em #B0B2B9, 0 -0.03em #B0B2B9, 0.06em 0 #B0B2B9, -0.06em 0 #B0B2B9, 0.09em 0 #B0B2B9, -0.09em 0 #B0B2B9, 0.12em 0 #B0B2B9, -0.12em 0 #B0B2B9, 0.15em 0 #B0B2B9, -0.15em 0 #B0B2B9;
   background: #B0B2B9;
 }
-main a::-moz-selection, footer a::-moz-selection {
+main a::-moz-selection, footer a::-moz-selection, .pagination a::-moz-selection {
   /*
    * Taken somewhat liberally from
    * https://eager.io/blog/smarter-link-underlines/
@@ -813,10 +866,10 @@ main a::-moz-selection, footer a::-moz-selection {
   text-shadow: 0.03em 0 #B0B2B9, -0.03em 0 #B0B2B9, 0 0.03em #B0B2B9, 0 -0.03em #B0B2B9, 0.06em 0 #B0B2B9, -0.06em 0 #B0B2B9, 0.09em 0 #B0B2B9, -0.09em 0 #B0B2B9, 0.12em 0 #B0B2B9, -0.12em 0 #B0B2B9, 0.15em 0 #B0B2B9, -0.15em 0 #B0B2B9;
   background: #B0B2B9;
 }
-main a:before, main a:after, main a *, main a *:before, main a *:after, footer a:before, footer a:after, footer a *, footer a *:before, footer a *:after {
+main a:before, main a:after, main a *, main a *:before, main a *:after, footer a:before, footer a:after, footer a *, footer a *:before, footer a *:after, .pagination a:before, .pagination a:after, .pagination a *, .pagination a *:before, .pagination a *:after {
   text-shadow: none;
 }
-main a:focus, main a:hover, footer a:focus, footer a:hover {
+main a:focus, main a:hover, footer a:focus, footer a:hover, .pagination a:focus, .pagination a:hover {
   color: #33374A;
 }
 
@@ -883,7 +936,7 @@ main a:focus, main a:hover, footer a:focus, footer a:hover {
     text-align: center;
   }
 
-  pre code {
+  pre code, table {
     padding: 0.1rem 0.2rem 0.0rem 0.2rem;
   }
 
@@ -969,19 +1022,61 @@ main a:focus, main a:hover, footer a:focus, footer a:hover {
   }
 
   .post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6 {
-    margin: 1em 0 0.5em 0;
+    margin: 1.5rem 0 1.0rem 0;
   }
 
   .post-content h1 {
     font-size: 22px;
+    line-height: 1.65;
+    display: table;
+    white-space: nowrap;
+  }
+  .post-content h1:after {
+    border-top: 1px solid #B0B2B9;
+    content: '';
+    display: table-cell;
+    position: relative;
+    top: 18.15px;
+    width: 100%;
+  }
+  .post-content h1:after {
+    left: 0.5%;
   }
 
   .post-content h2 {
     font-size: 20px;
+    line-height: 1.65;
+    display: table;
+    white-space: nowrap;
+  }
+  .post-content h2:after {
+    border-top: 1px solid #B0B2B9;
+    content: '';
+    display: table-cell;
+    position: relative;
+    top: 16.5px;
+    width: 100%;
+  }
+  .post-content h2:after {
+    left: 0.5%;
   }
 
   .post-content h3 {
     font-size: 18px;
+    line-height: 1.65;
+    display: table;
+    white-space: nowrap;
+  }
+  .post-content h3:after {
+    border-top: 1px solid #B0B2B9;
+    content: '';
+    display: table-cell;
+    position: relative;
+    top: 14.85px;
+    width: 100%;
+  }
+  .post-content h3:after {
+    left: 0.5%;
   }
 }
 /* === The following was taken from HTML5 Boilerplate's main.css === */
