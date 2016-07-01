@@ -73,7 +73,7 @@ html {
 
     @include font-kerning(normal);
     @include font-variant-ligatures(common-ligatures, contextual);
-    @include font-feature-settings("kern", "liga", "clig", "calt");
+    @include font-feature-settings("kern", "liga", "clig", "calt", "pnum", "onum", "tnum" off, "lnum" off);
 }
 
 html, p, nav, section, article {
