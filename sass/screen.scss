@@ -190,6 +190,42 @@ body {
     height: 100vh;
 }
 
+table {
+    @extend .donthyphenate;
+    border: 1px solid $dark-color;
+    font-variant-numeric: lining-nums tabular-nums;
+    @include font-feature-settings("kern", "liga", "clig", "calt", "lnum", "tnum", "pnum" off);
+    @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+
+    padding: 0.5em;
+    margin: 0 0 1.5em 0;
+}
+
+thead {
+    border: 1px solid $dark-color;
+}
+
+th, td {
+    padding: 0.25rem 0.5rem;
+}
+
+td {
+    font-family: $code-fonts;
+    line-height: 1.55;
+
+    border-bottom: 1px solid $light-color;
+}
+
+th {
+    font-family: $header-fonts;
+    letter-spacing: 0.09rem;
+    font-weight: 700;
+    @extend .donthyphenate;
+
+    color: $post-heading-color;
+    background: $light-color;
+}
+
 .site-header {
     padding: 1em;
     background-color: $siteheader-background-color;
@@ -548,13 +584,13 @@ main a, footer a {
         text-align: center;
     }
 
-    pre code {
+    pre code, table {
         padding: 0.1rem 0.2rem 0.0rem 0.2rem;
     }
     .posts {
         @include flex-direction(column);
         @include align-items(center);
-        
+
         & .post-title {
             min-height: 0;
         }
