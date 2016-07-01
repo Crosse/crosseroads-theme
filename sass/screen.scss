@@ -550,7 +550,7 @@ footer {
     //@include header-line($font-size, $line-height);
 }
 
-main a, footer a {
+main a, footer a, .pagination a {
     color: $link-color;
     @include transition(0.4s);
     @include underline($background-color, $link-color, $selection-background-color, $selection-color);
