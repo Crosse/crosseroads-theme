@@ -4,6 +4,9 @@
   "description": "A theme for Hugo",
   "repository": "https://github.com/crosse/crosseroads-theme",
   "version": "0.1.0",
+  "scripts": {
+    "build": "gulp"
+  },
   "devDependencies": {
     "del": "^2.2.0",
     "gulp": "^3.9.0",
