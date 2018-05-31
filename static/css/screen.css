@@ -900,7 +900,7 @@ main a:focus, main a:hover, footer a:focus, footer a:hover, .pagination a:focus,
         justify-content: flex-start;
     -ms-flex: 1 0 15%;
         flex: 1 0 15%;
-    min-height: 6em;
+    min-height: 7em;
     margin: 0;
     padding: 0 0.25rem;
   }

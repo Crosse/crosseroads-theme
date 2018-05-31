@@ -632,7 +632,7 @@ main a, footer a, .pagination a {
         @include justify-content(flex-start);
         @include flex(1 0 15%);
 
-        min-height: 6em;
+        min-height: 7em;
         margin: 0;
         padding: 0 0.25rem;
     }
