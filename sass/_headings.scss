@@ -9,7 +9,7 @@
       content: '';
       display: table-cell;
       position: relative;
-      top: $font-size * $line-height / 2;
+      top: $font-size * $line-height / 1.8;
       width: 100%;
     }
     &:after { left: 0.5%; }
