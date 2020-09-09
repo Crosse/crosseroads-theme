@@ -5,8 +5,6 @@ const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
 const rename = require('gulp-rename');
-//const notify = require('gulp-notify');
-//const livereload = require('gulp-livereload');
 const del = require('del');
 
 function build(cb) {
