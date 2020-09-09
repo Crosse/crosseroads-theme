@@ -7,7 +7,7 @@
 -->
 {{ partial "bodybegin.html" . }}
 {{ partial "navbar.html" . }}
-{{ $paginator := .Paginate (where .Data.Pages "Section" "post") 6 }}
+{{ $paginator := .Paginate (where .Site.RegularPages "Section" "post") 6 }}
 <main>
 {{ partial "metadata/structured_data/site.html" . }}
 <section class="posts">

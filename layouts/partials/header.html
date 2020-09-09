@@ -1,5 +1,5 @@
 <!doctype html>
-{{ if .Site.LanguageCode }} 
+{{ if .Site.LanguageCode }}
 <html lang="{{ .Site.LanguageCode }}">
 {{ else }}
 <html>
@@ -22,7 +22,7 @@
 -->
 {{ partial "headbegin.html" . }}
 
-{{ if .Hugo.Generator }}{{ .Hugo.Generator }}{{ end }}
+{{ if hugo.Generator }}{{ hugo.Generator }}{{ end }}
 {{ if .Description }}<meta name="description" content="{{ .Description }}">{{ end }}
 {{ if .Keywords }}<meta name="keywords" content="{{ range .Keywords }}{{ . }},{{ end }}">{{ end }}
 {{ if .Param "author" }}<meta name="author" content="{{ .Param "author" }}">{{ end }}
@@ -71,8 +71,9 @@
 <![endif]-->` | safeHTML }}
 
 <!-- RSS -->
-{{ if .RSSlink }}
-<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+{{ $t := .Site.Title }}
+{{ with .OutputFormats.Get "RSS" }}
+<link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $t }}" />
 {{ end }}
 
 <!--

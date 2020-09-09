@@ -6,9 +6,9 @@
     {{ partial "social.html" . }}
     <nav>
         <ul class="navigation">
-            {{ range $name, $section := .Site.Sections }}
-            {{ if $name }}
-            <li><a href="{{ $name | urlize }}">{{ $name | pluralize }}</a></li>
+            {{ range $idx, $section := .Site.Sections }}
+            {{ if $section }}
+            <li><a href="{{ $section.Permalink }}">{{ $section.LinkTitle | pluralize }}</a></li>
             <li class="link-separator">|</li>
             {{ end }}
             {{ end }}
