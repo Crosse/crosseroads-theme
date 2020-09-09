@@ -1,18 +1,15 @@
-var gulp = require('gulp'),
-    compass = require('gulp-compass'),
-    sourcemaps = require('gulp-sourcemaps'),
-    autoprefixer = require('gulp-autoprefixer'),
-    cssnano = require('gulp-cssnano'),
-    rename = require('gulp-rename'),
-    notify = require('gulp-notify'),
-    livereload = require('gulp-livereload'),
-    del = require('del');
+const gulp = require('gulp');
+const { series } = require('gulp');
+const compass = require('gulp-compass');
+const sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('gulp-autoprefixer');
+const cssnano = require('gulp-cssnano');
+const rename = require('gulp-rename');
+//const notify = require('gulp-notify');
+//const livereload = require('gulp-livereload');
+const del = require('del');
 
-gulp.task('default', ['clean'], function() {
-    gulp.start('styles');
-});
-
-gulp.task('styles', function() {
+function build(cb) {
     return gulp.src('sass/*.scss')
         .pipe(compass({
             config_file: 'config.rb',
@@ -27,9 +24,14 @@ gulp.task('styles', function() {
             .pipe(cssnano())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('static/css'))
-        //.pipe(notify({message: 'Styles task complete'}))
-});
+    cb();
+};
+exports.build = build;
 
-gulp.task('clean', function() {
+function clean(cb) {
     return del(['static/css/screen.*']);
-});
+    cb();
+};
+exports.clean = clean;
+
+exports.default = series(clean, build);

@@ -8,14 +8,14 @@
     "build": "gulp"
   },
   "devDependencies": {
-    "del": "^2.2.0",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-compass": "^2.1.0",
-    "gulp-cssnano": "^2.1.0",
-    "gulp-livereload": "^3.8.1",
-    "gulp-notify": "^2.2.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.6.0"
+    "del": "*",
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-compass": "*",
+    "gulp-cssnano": "*",
+    "gulp-livereload": "*",
+    "gulp-notify": "*",
+    "gulp-rename": "*",
+    "gulp-sourcemaps": "*"
   }
 }
