@@ -8,7 +8,7 @@
         <ul class="navigation">
             {{ range $idx, $section := .Site.Sections }}
             {{ if $section }}
-            <li><a href="{{ $section.Permalink }}">{{ $section.LinkTitle | pluralize }}</a></li>
+            <li><a href="{{ $section.RelPermalink }}">{{ $section.LinkTitle | pluralize }}</a></li>
             <li class="link-separator">|</li>
             {{ end }}
             {{ end }}

@@ -37,7 +37,7 @@
             <div class="post-summary-end">
                 {{ if and .Site.DisqusShortname (not (.Param "nocommentcount")) }}
                 <div class="comment-count">
-                    <a href="{{ .Permalink }}#disqus_thread"></a>
+                    <a href="{{ .RelPermalink }}#disqus_thread"></a>
                 </div>
                 {{ end }}
                 {{ if .Truncated }}

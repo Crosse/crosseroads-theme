@@ -32,7 +32,7 @@
             </div>
             {{ if and .Site.DisqusShortname (not (.Param "nocommentcount")) }}
             <div class="comment-count">
-                <a href="{{ .Permalink }}#disqus_thread">0 Comments</a>
+                <a href="{{ .RelPermalink }}#disqus_thread">0 Comments</a>
             </div>
             {{ end }}
         </header>
