@@ -32,7 +32,7 @@
 
 <!-- Any favicons or touch icons can go here. -->
 
-<link rel="stylesheet" href="css/screen.css">
+<link rel="stylesheet" href="{{ "css/screen.css" | relURL }}">
 
 <!--
     If you need to add any custom stylesheets, copy
@@ -46,7 +46,7 @@
     Lightbox for images.
 -->
 {{ if .Site.Params.lightbox }}
-<link rel="stylesheet" type="text/css" href="css/lightbox.min.css">
+<link rel="stylesheet" type="text/css" href="{{ "css/lightbox.min.css" | relURL }}">
 {{ end }}
 
 <!--

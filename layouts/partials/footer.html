@@ -2,9 +2,11 @@
     {{ if .Param "creativeCommonsLicense" }}
     <div class="license">
         <a rel="license" href="http://creativecommons.org/licenses/{{ .Param "creativeCommonsLicense" }}/4.0/">
-            <img height="15" width="80" alt="Creative Commons License" src="https://i.creativecommons.org/l/{{ .Param "creativeCommonsLicense" }}/4.0/80x15.png" />
+            <img height="15" width="80" alt="Creative Commons License" src="https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/{{ .Param "creativeCommonsLicense" }}.svg" />
         </a>
     </div>
     {{ end }}
+    <br />
     <div class="build">Built with love using Hugo {{ hugo.Version }} (<a href="https://gohugo.io/">https://gohugo.io/</a>).</div>
+    <!-- do some attribution for https://www.svgrepo.com/collection/sketched-social -->
 </footer>

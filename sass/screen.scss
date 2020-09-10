@@ -331,6 +331,14 @@ nav {
     @include flex(0 1 auto);
     @include display-flex(flex);
     @include flex-direction(row);
+
+}
+
+.social svg {
+    width: $base-font-size;
+    height: $base-font-size;
+    fill: $siteheader-subtitle-color;
+    margin: 0 0.15rem;
 }
 
 main {

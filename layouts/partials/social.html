@@ -1,19 +1,29 @@
 {{ if .Site.Params.showSocial }}
 <span class="social">
     {{ if .Site.Params.twitterId }}
-    <a href="https://twitter.com/{{ trim .Site.Params.twitterId "@" }}" aria-label="Twitter"><i class='fa fa-fw fa-twitter'></i></a>
+    <a href="https://twitter.com/{{ trim .Site.Params.twitterId "@" }}" aria-label="Twitter">
+        {{ readFile "themes/crosseroads-theme/static/img/twitter-square.svg" | safeHTML }}
+    </a>
     {{ end }}
     {{ if .Site.Params.twitterSite }}
-    <a href="https://twitter.com/{{ trim .Site.Params.twitterSite "@" }}" aria-label="Twitter"><i class='fa fa-fw fa-twitter'></i></a>
+    <a href="https://twitter.com/{{ trim .Site.Params.twitterSite "@" }}" aria-label="Twitter">
+        {{ readFile "themes/crosseroads-theme/static/img/twitter-square.svg" | safeHTML }}
+    </a>
     {{ end }}
     {{ if .Site.Params.githubProfile }}
-    <a href="https://github.com/{{ .Site.Params.githubProfile }}" aria-label="GitHub"><i class='fa fa-fw fa-github'></i></a>
+    <a href="https://github.com/{{ .Site.Params.githubProfile }}" aria-label="GitHub">
+        {{ readFile "themes/crosseroads-theme/static/img/github-square.svg" | safeHTML }}
+    </a>
     {{ end }}
     {{ if .Site.Params.bitbucketProfile }}
-    <a href="https://bitbucket.org/{{ .Site.Params.bitbucketProfile }}" aria-label="BitBucket"><i class='fa fa-fw fa-bitbucket'></i></a>
+    <a href="https://bitbucket.org/{{ .Site.Params.bitbucketProfile }}" aria-label="BitBucket">
+        {{ readFile "themes/crosseroads-theme/static/img/bitbucket.svg" | safeHTML }}
+    </a>
     {{ end }}
     {{ if .Site.Params.linkedinProfile }}
-    <a href="https://www.linkedin.com/in/{{ .Site.Params.linkedinProfile }}" aria-label="LinkedIn"><i class='fa fa-fw fa-linkedin'></i></a>
+    <a href="https://www.linkedin.com/in/{{ .Site.Params.linkedinProfile }}" aria-label="LinkedIn">
+        {{ readFile "themes/crosseroads-theme/static/img/linkedin.svg" | safeHTML }}
+    </a>
     {{ end }}
 </span>
 {{ end }}
