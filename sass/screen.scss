@@ -15,16 +15,22 @@
 @import "underline";
 @import "headings";
 
-$tiny-font-size: 8px;
-$small-font-size: 12px;
-$code-font-size: 16px;
+$code-font-size: 14px;
 $base-font-size: 16px;
-$medium-font-size: 22px;
-$large-font-size: 32px;
 
-$header-fonts: 'freight-neo-pro', 'Calibri', 'Helvetica', 'Arial', sans-serif;
-$main-fonts: 'orpheuspro', serif;
-$code-fonts: 'adaptive-mono', 'Source Code Pro', 'Consolas', 'Inconsolata', 'Monaco', monospace;
+$small-font-size: 0.813rem;
+$medium-font-size: 1.625rem;
+$large-font-size: 2.063rem;
+
+$base-line-height: 1.875;
+$small-line-height: 1.923;
+$medium-line-height: 1.692;
+$large-line-height: 1.636;
+
+
+$header-fonts: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+$main-fonts: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+$code-fonts: 'Source Code Pro', Consolas, Inconsolata, Menlo, Monaco, monospace;
 
 $light-color: #B0B2B9;
 $medium-color: #868997;
@@ -70,6 +76,7 @@ $selection-background-color: $light-color;
 html {
     color: $main-font-color;
     font-size: $base-font-size;
+    line-height: $base-line-height;
     background-color: $background-color;
 
     @include font-kerning(normal);
@@ -110,7 +117,7 @@ hr {
     height: 1px;
     border: 0;
     border-top: 1px solid #dark-color;
-    margin: 1em 0;
+    margin: 1rem 0;
     padding: 0;
 }
 
@@ -140,10 +147,10 @@ textarea {
 }
 
 .browserupgrade {
-    margin: 0.2em 0;
+    margin: 0.2rem 0;
     background: #ccc;
     color: #000;
-    padding: 0.2em 0;
+    padding: 0.2rem 0;
 }
 
 //@import "html5helpers";
@@ -152,24 +159,29 @@ textarea {
 
 blockquote p {
     border-left: 5px solid $light-color;
-    padding: 0 0.5em;
+    padding: 0 0.5rem;
     margin: 1.25rem 2rem 1.25rem 2rem;
 }
 
 code {
     font-family: $code-fonts;
+    @include font-feature-settings("kern", "liga" off, "clig" off, "calt", "pnum", "onum", "tnum" off, "lnum" off);
 }
 
 pre {
     @extend .donthyphenate;
     font-family: $code-fonts;
     font-size: $code-font-size;
-    line-height: 1.55;
-    padding: 0.5em;
-    margin: 0 0 1.5em 0;
+    //line-height: $base-line-height;
+    padding: 0.5rem;
+    margin: 0 0 1.5rem 0;
     border: 1px solid $dark-color;
     @include border-radius(0.35rem);
     @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+pre:not(.highlight) {
+    background-color: #f0f0f0;
 }
 
 p {
@@ -198,8 +210,8 @@ table {
     @include font-feature-settings("kern", "liga", "clig", "calt", "lnum", "tnum", "pnum" off);
     @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
 
-    padding: 0.5em;
-    margin: 0 0 1.5em 0;
+    padding: 0.5rem;
+    margin: 0 0 1.5rem 0;
 }
 
 thead {
@@ -212,7 +224,7 @@ th, td {
 
 td {
     font-family: $code-fonts;
-    line-height: 1.55;
+    //line-height: 1.55;
 
     border-bottom: 1px solid $light-color;
 }
@@ -228,7 +240,7 @@ th {
 }
 
 .site-header {
-    padding: 1em;
+    padding: 1rem;
     background-color: $siteheader-background-color;
 
     @include display-flex(flex);
@@ -236,13 +248,14 @@ th {
     @include align-items(center);
     @include align-content(center);
     @include flex(0 1 auto);
-    min-height: 4rem;
+    min-height: 3rem;
+    height: 3rem;
 
     a {
         text-decoration: none;
         display: block;
         color: $siteheader-color;
-        //padding: 0.25em 0.75em;
+        //padding: 0.25rem 0.75rem;
     }
     a:focus, a:hover {
         color: $siteheader-link-focus-color;
@@ -258,7 +271,7 @@ nav {
 
 .navigation, .pagination {
     margin: 0;
-    padding: 0 0.5em;
+    padding: 0 0.5rem;
     color: $siteheader-color;
 
     list-style: none;
@@ -268,10 +281,10 @@ nav {
     @include justify-content(flex-end);
 
     & li {
-        padding: 0.25em;
+        padding: 0.25rem;
     }
     & .link-separator {
-        padding: 0.25em;
+        padding: 0.25rem;
     }
     & .link-separator:last-of-type {
         display: none;
@@ -286,6 +299,7 @@ nav {
 
 .pagination {
     @include align-self(center);
+    @include font-feature-settings("kern", "liga", "clig", "calt", "pnum", "onum" off, "tnum" off, "lnum" on);
     .disabled, .active {
         color: $main-font-color;
         pointer-events: none;
@@ -295,32 +309,32 @@ nav {
     }
     li {
         text-align: center;
-        //margin: 0 0.15em;
-        //padding: 0.15em 0;
-        min-width: 2em;
+        //margin: 0 0.15rem;
+        //padding: 0.15rem 0;
+        min-width: 2rem;
         font-weight: bold;
     }
 }
 
 .site-title {
-    letter-spacing: 0.12em;
+    letter-spacing: 0.12rem;
     font-family: $header-fonts;
     font-weight: 400;
     font-size: 1.5rem;
 
     @include flex(0 1 auto);
-    margin: 0 0.5em;
+    margin: 0 0.5rem;
 }
 
 .site-subtitle {
     color: $siteheader-subtitle-color;
     font-family: $header-fonts;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.07rem;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: $base-font-size;
 
     @include flex(0 1 auto);
-    margin: 0 0.5em;
+    margin: 0.75rem 0.5rem 0.5rem 0;
 
     &::before {
         content: "//\00a0";
@@ -342,7 +356,7 @@ nav {
 }
 
 main {
-    margin: 1em 0.5em 0em 0.5em;
+    margin: 1rem 0.5rem 0 0.5rem;
     @include flex(1 0 auto);
 
     @include display-flex(flex);
@@ -351,7 +365,7 @@ main {
     @include justify-content(center);
 
     &>.post {
-        font-size: $medium-font-size;
+        font-size: $base-font-size;
         width: 800px;
     }
 }
@@ -367,8 +381,7 @@ main {
 
 article {
     max-width: 960px;
-    padding: 0.75em;
-    margin-bottom: 2em;
+    margin-bottom: 2rem;
     @include flex(1 0 30%);
 
     &:nth-of-type(2), &:nth-of-type(5) {
@@ -382,7 +395,7 @@ article {
 }
 
 .next-prev-links {
-    margin: 3em 0em 0em 0em;
+    margin: 3rem 0 0 0;
     @include display-flex(flex);
     @include flex-wrap(nowrap);
     @include align-items(flex-start);
@@ -418,7 +431,7 @@ article {
 footer {
     font-size: $small-font-size;
     color: $medium-color;
-    padding: 0.5em;
+    padding: 0.5rem;
     @include flex(1 0 auto);
     @include display-flex(flex);
     @include flex-direction(column);
@@ -430,21 +443,20 @@ footer {
 .build {
     font-family: $header-fonts;
     font-style: italic;
-    //font-size: 0.75em;
     font-weight: 100;
+    margin-top: 0.5rem;
 }
 
-.post-meta, .post-categories {
-    font-size: $base-font-size;
+.post-meta {
+    font-size: $small-font-size;
+    line-height: $small-line-height;
     text-indent: 0;
-    /*
-    a {
-        text-decoration: none;
-    }
-    */
 }
 
 .post-categories {
+    font-size: $small-font-size;
+    line-height: $small-line-height;
+    text-indent: 0;
     font-style: italic;
 }
 
@@ -452,6 +464,7 @@ footer {
     margin: 0;
     padding: 0;
     font-size: $large-font-size;
+    line-height: $large-line-height;
 }
 
 .post-title, h1, h2, h3, h4, h5, h6 {
@@ -463,7 +476,7 @@ footer {
 }
 
 .post-header {
-    padding: 0 0 2em 0;
+    padding: 0 0 1rem 0;
     a {
         color: $dark-color;
     }
@@ -474,23 +487,28 @@ footer {
 
 .posts {
     .post-header {
-        padding: 0 0 1em 0;
+        padding: 0 0 1rem 0;
     }
     .post-title {
-        min-height: 3em;
-        line-height: 1.2em;
+        //min-height: 3rem;
         font-size: $medium-font-size;
-        padding-bottom: 0.5em;
+        line-height: $medium-line-height;
+        padding-bottom: 0.25rem;
     }
     .post-meta {
-        font-size: $base-font-size;
+        font-size: $small-font-size;
+    }
+
+    article {
+        padding: 0 0.75rem;
     }
 }
 
 .post-summary {
-    text-indent: 1.35em;
+    text-indent: 1.35rem;
     text-align: justify;
     text-justify: inter-word;
+    font-size: $base-font-size;
 }
 
 .post-summary-end {
@@ -499,7 +517,7 @@ footer {
     @include flex-direction(row);
     @include align-items(baseline);
     text-indent: 0;
-    padding-top: 1em;
+    padding-top: 1rem;
 }
 
 .comment-count {
@@ -511,6 +529,7 @@ footer {
     @include flex (1 0 auto);
     font-style: italic;
     text-align: right;
+    font-size: $small-font-size;
 }
 
 .post-header {
@@ -519,12 +538,12 @@ footer {
 
 .post-content, .post-summary {
     @extend .hyphenate;
-    line-height: 1.65;
+    //line-height: 1.65;
 }
 
 .post-content {
     & p, pre {
-        margin-bottom: 1em;
+        margin-bottom: 1rem;
     }
     p:empty {
         display: none;
@@ -537,31 +556,31 @@ footer {
 .post-content h4,
 .post-content h5,
 .post-content h6 {
-    margin: 2.0em 0 0.5em 0;
+    margin: 1.25rem 0 0.5rem 0;
     @include font-feature-settings("kern", "liga", "clig", "calt", "pnum" off, "tnum" off, "lnum" on);
 }
 
 .post-content h1 {
-    $font-size: ($large-font-size)-2;
-    $line-height: 1.65;
+    font-size: $large-font-size;
+    line-height: $large-line-height;
 }
 
 .post-content h2 {
-    $font-size: ($large-font-size)-4;
-    $line-height: 1.65;
-    @include header-line($font-size, $line-height);
+    $font-size: $medium-font-size;
+    $line-height: $medium-line-height;
+    //@include header-line($font-size, $line-height);
 }
 
 .post-content h3 {
-    $font-size: ($large-font-size)-6;
-    $line-height: 1.65;
-    //@include header-line($font-size, $line-height);
+    font-size: $base-font-size;
+    line-height: $base-line-height;
 }
 
 main a, footer a, .pagination a {
     color: $link-color;
     @include transition(0.4s);
-    @include underline($background-color, $link-color, $selection-background-color, $selection-color);
+    text-decoration: none;
+    //@include underline($background-color, $link-color, $selection-background-color, $selection-color);
 
     &:focus, &:hover {
         color: $link-focus-color;
@@ -580,7 +599,7 @@ main a, footer a, .pagination a {
     }
     blockquote p {
         border-left: 5px solid $light-color;
-        padding: 0 0.5em;
+        padding: 0 0.5rem;
         margin: 1.25rem 0;
     }
 }
@@ -594,7 +613,7 @@ main a, footer a, .pagination a {
     .next-link, .prev-link, .up-link {
         display: block;
         @include flex(1 0 auto);
-        padding: 0.5em 0 0.5em 0;
+        padding: 0.5rem 0 0.5rem 0;
     }
     .prev-link {
         order: 1;
@@ -640,7 +659,7 @@ main a, footer a, .pagination a {
         @include justify-content(flex-start);
         @include flex(1 0 15%);
 
-        min-height: 7em;
+        min-height: 7rem;
         margin: 0;
         padding: 0 0.25rem;
     }
@@ -682,18 +701,18 @@ main a, footer a, .pagination a {
     }
 
     .post-content h1 {
-        $font-size: $medium-font-size;
-        $line-height: 1.65;
+        $font-size: $large-font-size;
+        $line-height: $large-line-height;
         @include header-line($font-size, $line-height);
     }
     .post-content h2 {
-        $font-size: ($medium-font-size)-2;
-        $line-height: 1.65;
+        $font-size: $medium-font-size;
+        $line-height: $medium-line-height;
         @include header-line($font-size, $line-height);
     }
     .post-content h3 {
-        $font-size: ($medium-font-size)-4;
-        $line-height: 1.65;
+        $font-size: $base-font-size;
+        $line-height: $base-line-height;
         @include header-line($font-size, $line-height);
     }
 }
